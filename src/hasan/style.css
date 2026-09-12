@@ -1,0 +1,1166 @@
+/* ============================================
+   CV HASAN — RETRO PIXEL VINTAGE
+   DESIGN.md §1–§33 Full Implementation
+   ============================================ */
+
+/* ── Design Tokens (§28/§3) ── */
+:root {
+  --bg: #171B1F;
+  --panel: #22282D;
+  --panel-light: #2D353B;
+  --cream: #F2E7C9;
+  --muted: #AFA58F;
+  --green: #9BBC68;
+  --green-dark: #506C45;
+  --yellow: #E8C96A;
+  --orange: #D9824B;
+  --red: #B8564B;
+  --blue: #7097A8;
+  --black: #0D1012;
+  --border: 2px;
+  --shadow: 4px 4px 0 var(--black);
+  --shadow-btn: 3px 3px 0 var(--black);
+  --radius: 0px;
+  --content-width: 1180px;
+  --page-pad: 32px;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+  background-color: var(--bg);
+  color: var(--cream);
+  font-family: 'VT323', 'Pixelify Sans', 'JetBrains Mono', monospace;
+  font-size: 20px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  /* §2.1: pixel grid + vignette */
+  background-image:
+    radial-gradient(ellipse at center, transparent 50%, rgba(13,16,18,0.55) 100%),
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+  animation: screenFlicker 8s linear infinite;
+}
+
+/* §2: Subtle screen flicker */
+@keyframes screenFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: .985; }
+  94% { opacity: 1; }
+}
+
+/* §2: Noise/grain overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* §20: CRT Scanline Overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10000;
+  opacity: 0.035;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(255,255,255,.08) 3px
+  );
+}
+
+/* ── Typography (§4) ── */
+/* §4.1: Press Start 2P = headings/decorative, VT323 = body/terminal, Pixelify Sans = alt display, JetBrains Mono = fallback */
+h1, h2, h3, h4, .brand, .pbtn, .rw-header, .cc-header, .quest-number, .project-slot, .stat-category, .skill-lv-level {
+  font-family: 'Press Start 2P', monospace;
+}
+.heading-pixelify {
+  font-family: 'Pixelify Sans', 'Press Start 2P', monospace;
+}
+a { color: var(--yellow); text-decoration: none; }
+a:hover { color: var(--green); }
+
+/* §4: letter-spacing kecil */
+h1, h2, h3, h4 { letter-spacing: .5px; }
+
+/* §4: heading uppercase */
+h1, h2, h3, h4 { text-transform: uppercase; }
+
+/* ── Focus (§22) ── */
+:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+/* ── Utilities ── */
+.wrap { max-width: var(--content-width); margin: 0 auto; padding: 0 var(--page-pad); }
+.no-print {}
+
+/* ============================================
+   MARQUEE
+   ============================================ */
+.marquee {
+  background: var(--yellow);
+  color: var(--black);
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 2px solid var(--black);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 8px 0;
+}
+.marquee-inner {
+  display: inline-block;
+  animation: marqueeScroll 20s linear infinite;
+}
+.marquee-inner span { display: inline; }
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ============================================
+   NAVIGATION (§6)
+   ============================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(23, 27, 31, 0.95);
+  backdrop-filter: blur(2px);
+  border-bottom: 2px solid var(--panel-light);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px var(--page-pad);
+  min-height: 52px;
+}
+.brand {
+  color: var(--yellow);
+  font-size: 11px;
+  white-space: nowrap;
+  text-decoration: none;
+}
+.brand:hover { color: var(--green); }
+.nav-links {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  color: var(--muted);
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  padding: 4px 10px;
+  text-decoration: none;
+  transition: color .15s;
+  position: relative;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+/* §17: nav icon via data-icon */
+.nav-links a::before {
+  content: attr(data-icon) " ";
+  font-size: 14px;
+  opacity: .6;
+}
+.nav-links a:hover { color: var(--cream); }
+.nav-links a.active {
+  color: var(--green);
+}
+.nav-links a.active::before {
+  content: "> ";
+  opacity: 1;
+}
+.nav-links a.active::after {
+  content: "\2588";
+  animation: blink 600ms steps(1) infinite;
+  color: var(--green);
+  margin-left: 3px;
+  font-size: 14px;
+  vertical-align: middle;
+}
+.nav-controls {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 8px 6px;
+  background: none;
+  border: 2px solid var(--cream);
+  cursor: pointer;
+}
+.hamburger-line {
+  display: block;
+  width: 16px;
+  height: 2px;
+  background: var(--cream);
+}
+
+/* ============================================
+   MOBILE NAV OVERLAY (§6)
+   ============================================ */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(13, 16, 18, 0.92);
+  z-index: 200;
+  overflow-y: auto;
+  padding: 24px;
+}
+.nav-overlay.open { display: block; }
+.nav-overlay-inner {
+  max-width: 420px;
+  margin: 50px auto 24px;
+  background: var(--panel);
+  border: 2px solid var(--panel-light);
+  box-shadow: var(--shadow);
+}
+.nav-overlay-body { padding: 8px 0; }
+.nav-overlay-link {
+  display: block;
+  padding: 14px 18px;
+  color: var(--cream);
+  text-decoration: none;
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  border-bottom: 1px solid var(--panel-light);
+  text-transform: uppercase;
+}
+.nav-overlay-link:last-of-type { border-bottom: none; }
+.nav-overlay-link:hover,
+.nav-overlay-link.active { color: var(--green); }
+.nav-close {
+  margin-left: auto;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-family: 'Press Start 2P', monospace;
+}
+.nav-close:hover { color: var(--red); }
+.nav-overlay-controls {
+  padding: 14px 18px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 2px solid var(--panel-light);
+}
+
+/* ============================================
+   BUTTONS (§14)
+   ============================================ */
+.pbtn {
+  display: inline-block;
+  background: var(--panel-light);
+  color: var(--cream);
+  border: 2px solid var(--cream);
+  box-shadow: var(--shadow-btn);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 10px 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  letter-spacing: .5px;
+  transition: transform .1s, box-shadow .1s;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+.pbtn:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 5px 5px 0 var(--black);
+  color: var(--cream);
+}
+.pbtn:active {
+  transform: translate(4px, 4px);
+  box-shadow: none;
+}
+.pbtn.primary {
+  background: var(--green);
+  color: var(--black);
+  border-color: var(--black);
+}
+.pbtn.primary:hover { color: var(--black); }
+.pbtn.small {
+  font-size: 7px;
+  padding: 7px 10px;
+}
+.pbtn.accent {
+  background: var(--yellow);
+  color: var(--black);
+  border-color: var(--black);
+}
+.pbtn.accent:hover { color: var(--black); }
+
+/* ============================================
+   HERO SECTION (§7)
+   ============================================ */
+.hero {
+  padding: 40px 0 24px;
+  position: relative;
+}
+.hero-wrap {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.hero-left { flex: 1; min-width: 0; }
+.hero-right { flex: 0 0 340px; }
+
+/* §18: Hero decorative grid */
+.hero-deco-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.deco {
+  position: absolute;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--panel-light);
+  opacity: .4;
+}
+.deco-star { color: var(--yellow); opacity: .25; font-size: 12px; }
+.deco-plus { color: var(--muted); }
+.deco-dot { color: var(--muted); font-size: 16px; }
+
+/* ── Boot Text (§19) ── */
+.boot-text {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--green);
+  margin-bottom: 20px;
+  min-height: 72px;
+}
+.boot-line {
+  opacity: 0;
+  transform: translateX(-8px);
+  animation: bootLine .3s ease forwards;
+}
+.boot-line:nth-child(1) { animation-delay: .3s; }
+.boot-line:nth-child(2) { animation-delay: .8s; }
+.boot-line:nth-child(3) { animation-delay: 1.3s; }
+.boot-line:nth-child(4) { animation-delay: 1.8s; }
+@keyframes bootLine {
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Hero Content (§7/§32 visual priority) ── */
+.hero-content {
+  opacity: 0;
+  animation: fadeUp .5s ease 2.2s forwards;
+  position: relative;
+  z-index: 1;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-greeting {
+  font-family: 'VT323', monospace;
+  font-size: 20px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.hero-name {
+  font-size: 44px;
+  color: var(--yellow);
+  text-shadow: 3px 3px 0 var(--black);
+  margin: 0 0 12px;
+  line-height: 1.2;
+}
+.hero-divider {
+  width: 160px;
+  height: 2px;
+  background: var(--cream);
+  opacity: .25;
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-family: 'VT323', monospace;
+  font-size: 24px;
+  min-height: 32px;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+.hero-desc {
+  font-size: 18px;
+  color: var(--muted);
+  max-width: 480px;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+.hero-status {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--green);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 8px 12px;
+  background: var(--panel);
+  border: 2px solid var(--panel-light);
+}
+/* §18: LED indicator */
+.led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+}
+.led-green {
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  animation: ledPulse 2s ease infinite;
+}
+@keyframes ledPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .5; }
+}
+.cc-led {
+  margin-left: auto;
+}
+.hero-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.cursor {
+  animation: blink 600ms steps(1) infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* ============================================
+   CHARACTER CARD (§8/§30)
+   ============================================ */
+.character-card {
+  background: var(--panel);
+  border: 2px solid var(--panel-light);
+  box-shadow: var(--shadow);
+}
+.cc-header {
+  background: var(--panel-light);
+  border-bottom: 2px solid var(--panel-light);
+  padding: 10px 14px;
+  font-size: 10px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rw-dots {
+  color: var(--yellow);
+  letter-spacing: 4px;
+  font-family: 'Press Start 2P', monospace;
+}
+/* §30: Avatar frame pixelated */
+.cc-avatar {
+  padding: 16px;
+  text-align: center;
+}
+.cc-avatar img {
+  width: 180px;
+  height: 200px;
+  object-fit: cover;
+  border: 2px solid var(--panel-light);
+  image-rendering: pixelated;
+  filter: contrast(1.05) saturate(.95) brightness(1.02);
+  display: block;
+  margin: 0 auto;
+}
+.avatar-fallback {
+  width: 180px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 48px;
+  color: var(--yellow);
+  border: 2px solid var(--panel-light);
+  margin: 0 auto;
+}
+.cc-divider {
+  height: 2px;
+  background: var(--panel-light);
+}
+.cc-stats { padding: 14px 16px; }
+.cc-row {
+  display: flex;
+  gap: 6px;
+  padding: 5px 0;
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  line-height: 1.3;
+}
+.cc-label {
+  min-width: 82px;
+  color: var(--blue);
+  text-transform: uppercase;
+}
+.cc-value { color: var(--cream); text-transform: uppercase; }
+.cc-online { color: var(--green); }
+.cc-exp { padding: 14px 16px; }
+.cc-exp-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+/* ============================================
+   RETRO WINDOW (§15/§16/§27)
+   ============================================ */
+.retro-window {
+  background: var(--panel);
+  border: 2px solid var(--panel-light);
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+}
+.rw-header {
+  background: var(--panel-light);
+  border-bottom: 2px solid var(--panel-light);
+  padding: 10px 14px;
+  font-size: 10px;
+  color: var(--cream);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rw-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--cream);
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+.rw-spacer { flex: 1; }
+.rw-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+}
+.rw-body { padding: 20px; }
+
+/* §18: Decorative terminal prompt */
+.deco-terminal {
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  color: var(--green-dark);
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed var(--panel-light);
+  opacity: .6;
+}
+
+/* ============================================
+   SECTION GRID (§5)
+   ============================================ */
+.section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ============================================
+   TERMINAL / ABOUT STYLE (§9)
+   ============================================ */
+.terminal-line {
+  font-family: 'VT323', monospace;
+  font-size: 18px;
+  color: var(--cream);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+.terminal-line::before {
+  content: "> ";
+  color: var(--green);
+}
+.rw-body .terminal-line:first-child { margin-top: 0; }
+.terminal-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  padding-left: 16px;
+}
+.edu-item {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--panel-light);
+}
+.edu-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.stat-category {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--muted);
+  margin: 18px 0 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.stat-category:first-child { margin-top: 0; }
+
+/* ============================================
+   SKILLS / STATS (§10)
+   ============================================ */
+.skill { margin-bottom: 12px; }
+.skill-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+.skill-name { color: var(--cream); }
+.skill-level { color: var(--muted); font-size: 15px; }
+.pixel-bar {
+  height: 16px;
+  background: var(--black);
+  border: 2px solid var(--panel-light);
+  box-shadow: 2px 2px 0 var(--black);
+  overflow: hidden;
+}
+.pixel-bar-sm {
+  height: 10px;
+  box-shadow: none;
+}
+.fill {
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--yellow) 0 8px,
+    var(--green-dark) 8px 10px
+  );
+}
+.fill-green {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--green) 0 8px,
+    var(--green-dark) 8px 10px
+  ) !important;
+}
+/* §10: LV Card variant */
+.skill-lv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.skill-lv-card {
+  background: var(--panel-light);
+  border: 2px solid var(--panel);
+  padding: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 0 var(--black);
+  transition: transform .15s, border-color .15s;
+}
+.skill-lv-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--black);
+  border-color: var(--yellow);
+}
+.skill-lv-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--cream);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.skill-lv-level {
+  font-size: 8px;
+  color: var(--orange);
+  margin-bottom: 6px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.tag {
+  display: inline-block;
+  background: var(--black);
+  border: 2px solid var(--panel-light);
+  color: var(--yellow);
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  padding: 5px 8px;
+  text-transform: uppercase;
+}
+.terminal-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.terminal-list li {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  padding: 3px 0;
+  color: var(--cream);
+}
+
+/* ============================================
+   QUEST CARDS + TIMELINE (§11)
+   ============================================ */
+.timeline {
+  position: relative;
+  padding-left: 28px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--panel-light);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 16px;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -24px;
+  top: 16px;
+  width: 12px;
+  height: 12px;
+  background: var(--green);
+  border: 2px solid var(--panel);
+  z-index: 1;
+}
+.quest-card {
+  background: var(--panel-light);
+  border: 2px solid var(--panel);
+  padding: 14px 16px;
+  box-shadow: 2px 2px 0 var(--black);
+}
+.quest-header { margin-bottom: 6px; }
+.quest-number {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--orange);
+  letter-spacing: 1px;
+}
+.quest-role {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: var(--cream);
+  margin: 4px 0;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.quest-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.quest-desc {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--cream);
+  line-height: 1.4;
+}
+/* §11: Quest rewards */
+.quest-rewards {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--panel);
+}
+.quest-rewards-label {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.quest-reward-item {
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  color: var(--green);
+  display: block;
+  padding: 1px 0;
+}
+.badge-card {
+  border-left: 3px solid var(--green);
+}
+
+/* ============================================
+   PROJECT CARDS (§12/§30)
+   ============================================ */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.project-card {
+  background: var(--panel-light);
+  border: 2px solid var(--panel);
+  box-shadow: 4px 4px 0 var(--black);
+  transition: transform .15s, box-shadow .15s, border-color .15s;
+}
+.project-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0 var(--black);
+  border-color: var(--yellow);
+}
+.project-card-header {
+  background: var(--panel);
+  border-bottom: 2px solid var(--panel);
+  padding: 8px 14px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.project-slot { color: var(--yellow); }
+/* §12/§30: Project preview frame pixel */
+.project-preview {
+  background: var(--panel);
+  border-bottom: 2px solid var(--panel);
+  padding: 32px 16px;
+  text-align: center;
+  overflow: hidden;
+}
+.project-preview-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  transition: transform .2s;
+}
+.project-card:hover .project-preview-inner {
+  transform: scale(1.03);
+}
+.project-preview-icon {
+  font-size: 28px;
+  color: var(--panel-light);
+}
+.project-preview-text {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 7px;
+  color: var(--panel-light);
+  letter-spacing: 1px;
+}
+.project-preview:has(img) { padding: 0; background: var(--black); }
+.project-preview img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  object-position: top center;
+  image-rendering: auto;
+  border-bottom: 2px solid var(--black);
+  transition: transform .2s;
+}
+.project-card:hover .project-preview img { transform: scale(1.03); }
+.project-card-body { padding: 16px; }
+.project-name {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 11px;
+  color: var(--cream);
+  margin-bottom: 6px;
+  line-height: 1.6;
+  text-transform: uppercase;
+}
+.project-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.project-desc {
+  font-family: 'VT323', monospace;
+  font-size: 17px;
+  color: var(--cream);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.project-btns {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+/* ============================================
+   CONTACT (§13)
+   ============================================ */
+.contact-channels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0;
+}
+.contact-form-area {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--panel-light);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ============================================
+   FOOTER / STATUS BAR (§25)
+   ============================================ */
+.status-bar {
+  background: var(--black);
+  border-top: 2px solid var(--panel-light);
+  padding: 14px 0;
+  margin-top: 24px;
+}
+.status-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  color: var(--muted);
+}
+.status-green { color: var(--green); }
+.status-social {
+  display: flex;
+  gap: 12px;
+}
+.status-social a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+}
+.status-social a:hover { color: var(--green); }
+
+/* ============================================
+   RESPONSIVE (§21)
+   ============================================ */
+
+/* Desktop ≥ 1024px */
+@media (min-width: 1024px) {
+  .deco { opacity: .4; }
+}
+
+/* Tablet 768-1023px */
+@media (max-width: 1023px) {
+  :root { --page-pad: 24px; }
+  .hero-wrap {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-right {
+    flex: none;
+    width: 100%;
+    max-width: 340px;
+  }
+  .hero-left { text-align: center; }
+  .hero-desc { margin-left: auto; margin-right: auto; }
+  .hero-btns { justify-content: center; }
+  .hero-divider { margin-left: auto; margin-right: auto; }
+  .hero-status { margin-left: auto; margin-right: auto; }
+  /* §21: reduce decorations on tablet */
+  .deco { opacity: .15; }
+}
+
+/* Mobile < 768px */
+@media (max-width: 767px) {
+  :root { --page-pad: 16px; }
+  .nav-links { display: none; }
+  .nav-controls .pbtn:not(:last-child) { display: none; }
+  .hamburger { display: flex; }
+  .hero-name { font-size: 28px; }
+  .hero-title { font-size: 20px; }
+  .hero-greeting { font-size: 18px; }
+  .section-grid { grid-template-columns: 1fr; }
+  .project-grid { grid-template-columns: 1fr; }
+  .rw-body { padding: 16px; }
+  .cc-avatar img { width: 150px; height: 170px; }
+  .avatar-fallback { width: 150px; height: 170px; font-size: 36px; }
+  .skill-lv-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+  /* §21: hide decorations on mobile */
+  .deco { display: none; }
+  .deco-terminal { display: none; }
+  .status-inner { gap: 8px; font-size: 13px; }
+}
+
+/* Small mobile < 480px */
+@media (max-width: 479px) {
+  .hero-name { font-size: 22px; }
+  .hero-title { font-size: 18px; }
+  .hero-desc { font-size: 16px; }
+  .pbtn { width: 100%; text-align: center; }
+  .hero-btns { flex-direction: column; }
+  .hero-btns .pbtn { width: 100%; }
+  .project-card-header { font-size: 7px; }
+  .contact-channels { flex-direction: column; }
+  .contact-channels .pbtn { width: 100%; text-align: center; }
+  .cc-row { font-size: 15px; }
+  .cc-label { min-width: 70px; }
+  .boot-text { font-size: 14px; min-height: 60px; }
+  .skill-lv-grid { grid-template-columns: 1fr 1fr; }
+  .hero-status { font-size: 7px; padding: 6px 8px; }
+  .project-preview { padding: 24px 12px; }
+  .contact-form-area { flex-direction: column; }
+  .contact-form-area .pbtn { width: 100%; text-align: center; }
+}
+
+/* ============================================
+   PRINT (keep clean)
+   ============================================ */
+@media print {
+  .no-print, .navbar, .marquee, .nav-overlay, .status-bar, body::after, body::before {
+    display: none !important;
+  }
+  * { animation: none !important; transition: none !important; }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+    background-image: none !important;
+  }
+  .hero-content { opacity: 1 !important; }
+  .wrap { padding: 0 12px; max-width: 100%; }
+  .hero { padding: 10px 0; }
+  .hero-wrap { flex-direction: row; gap: 16px; }
+  .hero-name { color: #000; text-shadow: none; font-size: 24px; }
+  .hero-title, .hero-greeting, .hero-desc { color: #000; }
+  .hero-divider { background: #000; opacity: .3; }
+  .hero-status { background: none; border-color: #000; color: #000; }
+  .led { display: none; }
+  .retro-window {
+    box-shadow: none;
+    border: 1px solid #000;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin: 8px 0;
+  }
+  .rw-header, .cc-header {
+    background: #eee;
+    border-bottom: 1px solid #000;
+    color: #000;
+  }
+  .rw-dots, .quest-number, .project-slot { color: #555; }
+  .character-card { max-width: 260px; }
+  .cc-avatar img { width: 140px; height: 155px; filter: none; }
+  .cc-row { font-size: 14px; color: #000; }
+  .cc-label { color: #555; }
+  .cc-value { color: #000; }
+  .cc-online { color: #000; }
+  .section-grid { grid-template-columns: 1fr 1fr; }
+  .project-grid { grid-template-columns: 1fr 1fr; }
+  .project-card {
+    box-shadow: none;
+    border: 1px solid #000;
+  }
+  .project-card:hover { transform: none; }
+  .project-preview { border-color: #000; }
+  .project-preview-icon, .project-preview-text { color: #888; }
+  .pixel-bar { border-color: #000; }
+  .fill { background: #888 !important; }
+  .fill-green { background: #666 !important; }
+  .tag { border-color: #000; color: #000; }
+  .quest-card {
+    background: #f5f5f5;
+    border-color: #000;
+    box-shadow: none;
+  }
+  .quest-role, .project-name { color: #000; }
+  .quest-desc, .project-desc, .terminal-line { color: #000; }
+  .terminal-line::before { color: #000; }
+  .terminal-meta { color: #555; }
+  .terminal-list li { color: #000; }
+  .quest-rewards { border-color: #000; }
+  .quest-reward-item { color: #000; }
+  .skill-lv-card { box-shadow: none; border-color: #000; }
+  .skill-lv-card:hover { transform: none; }
+  .timeline { padding-left: 20px; }
+  .timeline::before { background: #000; }
+  .timeline-dot { background: #000; border-color: #fff; }
+  .badge-card { border-left-color: #000; }
+  a { color: #000; text-decoration: none; }
+  .pbtn {
+    background: #eee;
+    color: #000;
+    border-color: #000;
+    box-shadow: none;
+    font-size: 8px;
+  }
+  .pbtn.primary { background: #000; color: #fff; }
+  .pbtn.accent { background: #888; color: #000; }
+  .pbtn:hover { transform: none; box-shadow: none; }
+  .contact-channels { gap: 6px; }
+  .boot-text { display: none; }
+  .deco-terminal { display: none; }
+  .deco { display: none; }
+}
+
+/* ============================================
+   REDUCED MOTION (§19/§22)
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  body { animation: none !important; }
+  body::after { display: none; }
+}
+.reduced-motion { animation: none !important; }
+.reduced-motion .boot-line {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+}
+.reduced-motion .hero-content {
+  opacity: 1 !important;
+  animation: none !important;
+}
+.reduced-motion .marquee-inner { animation: none !important; }
+.reduced-motion .cursor { animation: none !important; opacity: 1; }
+.reduced-motion .nav-links a.active::after { animation: none !important; opacity: 1; }
+.reduced-motion .led-green { animation: none !important; }

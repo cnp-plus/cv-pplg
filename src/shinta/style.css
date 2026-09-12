@@ -1,0 +1,717 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: #064b83;
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,.35) 0 5px, transparent 6px),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,.25) 0 7px, transparent 8px),
+        linear-gradient(
+            180deg,
+            #009bd6 0%,
+            #007ac2 35%,
+            #005ca8 70%,
+            #003d7a 100%
+        );
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    position: relative;
+
+    min-height: 360px;
+
+    padding: 55px 8%;
+
+    background:
+        linear-gradient(
+            rgba(0, 130, 200, .65),
+            rgba(0, 70, 150, .85)
+        );
+
+    border-bottom-left-radius: 50% 12%;
+    border-bottom-right-radius: 50% 12%;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+}
+
+
+.header::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    top: 0;
+    left: 0;
+
+    background:
+        radial-gradient(circle, rgba(255,255,255,.25) 0 3px, transparent 4px);
+
+    background-size: 70px 70px;
+
+    opacity: .7;
+}
+
+
+.header-content {
+
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1150px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 35px;
+}
+
+
+/* FOTO */
+
+.foto-box {
+
+    width: 220px;
+    height: 220px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    padding: 8px;
+
+    background:
+        linear-gradient(
+            135deg,
+            white,
+            #7de3ff,
+            white
+        );
+
+    box-shadow:
+        0 0 0 5px rgba(255,255,255,.35),
+        0 10px 35px rgba(0,0,0,.35);
+}
+
+
+.foto-box img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    display: block;
+}
+
+
+/* NAMA */
+
+.identitas-header {
+
+    color: white;
+
+    flex: 1;
+}
+
+
+.identitas-header h1 {
+
+    font-family: Georgia, serif;
+
+    font-size: 48px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        3px 3px 0 #075a9c,
+        0 5px 15px rgba(0,0,0,.3);
+
+    margin-bottom: 18px;
+}
+
+
+.identitas-header p {
+
+    font-size: 25px;
+
+    font-weight: bold;
+
+    text-shadow:
+        2px 2px 5px rgba(0,0,0,.3);
+}
+
+
+.gelombang {
+
+    margin-top: 18px;
+
+    width: 190px;
+
+    height: 8px;
+
+    border-top: 3px solid white;
+
+    border-radius: 50%;
+}
+
+
+/* MERMAID */
+
+.mermaid {
+
+    font-size: 115px;
+
+    filter:
+        drop-shadow(0 8px 8px rgba(0,0,0,.25));
+
+    transform: rotate(-4deg);
+}
+
+
+/* HIASAN */
+
+.shell {
+
+    position: absolute;
+
+    z-index: 3;
+
+    font-size: 55px;
+
+    filter:
+        drop-shadow(0 5px 5px rgba(0,0,0,.25));
+}
+
+
+.shell1 {
+
+    left: 5%;
+
+    bottom: 15px;
+}
+
+
+.shell2 {
+
+    right: 8%;
+
+    bottom: 10px;
+}
+
+
+.pearl {
+
+    position: absolute;
+
+    color: white;
+
+    text-shadow:
+        0 0 10px white;
+
+    z-index: 3;
+}
+
+
+.pearl1 {
+
+    left: 35%;
+
+    top: 30px;
+
+    font-size: 25px;
+}
+
+
+.pearl2 {
+
+    right: 35%;
+
+    top: 80px;
+
+    font-size: 18px;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 90%;
+
+    max-width: 1100px;
+
+    margin: -30px auto 60px;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card {
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.96),
+            rgba(225,247,255,.94)
+        );
+
+    margin-bottom: 25px;
+
+    padding: 35px 40px;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 10px 30px rgba(0,50,100,.25);
+
+    border: 2px solid rgba(255,255,255,.7);
+
+    overflow: hidden;
+}
+
+
+.card::after {
+
+    content: "🫧";
+
+    position: absolute;
+
+    right: 25px;
+
+    top: 20px;
+
+    font-size: 35px;
+
+    opacity: .5;
+}
+
+
+.card h2 {
+
+    color: #0865b5;
+
+    font-family: Georgia, serif;
+
+    font-size: 31px;
+
+    display: inline-block;
+}
+
+
+.garis {
+
+    width: 100px;
+
+    height: 4px;
+
+    background: #38aee8;
+
+    border-radius: 50%;
+
+    margin: 8px 0 25px;
+}
+
+
+/* =========================
+   TENTANG SAYA
+========================= */
+
+.deskripsi {
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #245b84;
+
+    margin-bottom: 10px;
+
+    max-width: 850px;
+}
+
+
+.hiasan-kanan {
+
+    position: absolute;
+
+    right: 50px;
+
+    bottom: 30px;
+
+    font-size: 80px;
+
+    opacity: .7;
+}
+
+
+/* =========================
+   DATA DIRI
+========================= */
+
+.data-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 45px;
+}
+
+
+.data-column {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+}
+
+
+.data-item {
+
+    display: flex;
+
+    gap: 18px;
+
+    align-items: flex-start;
+}
+
+
+.icon {
+
+    font-size: 32px;
+
+    min-width: 45px;
+
+    text-align: center;
+}
+
+
+.data-item strong {
+
+    color: #075fa9;
+
+    font-size: 18px;
+}
+
+
+.data-item p {
+
+    margin-top: 5px;
+
+    color: #376582;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   PENDIDIKAN
+========================= */
+
+.pendidikan {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    background:
+        rgba(191,232,250,.45);
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    border-left: 6px solid #168bd0;
+}
+
+
+.pendidikan-icon {
+
+    font-size: 50px;
+}
+
+
+.pendidikan h3 {
+
+    color: #075fa9;
+
+    font-size: 23px;
+
+    margin-bottom: 8px;
+}
+
+
+.pendidikan p {
+
+    color: #376582;
+
+    line-height: 1.6;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   BUBBLE
+========================= */
+
+.bubble {
+
+    position: fixed;
+
+    border: 2px solid rgba(255,255,255,.5);
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,.12);
+
+    animation: naik 7s infinite ease-in;
+}
+
+
+.b1 {
+
+    width: 25px;
+    height: 25px;
+
+    left: 8%;
+    bottom: -50px;
+}
+
+
+.b2 {
+
+    width: 45px;
+    height: 45px;
+
+    left: 25%;
+    bottom: -60px;
+
+    animation-delay: 2s;
+}
+
+
+.b3 {
+
+    width: 18px;
+    height: 18px;
+
+    left: 55%;
+    bottom: -40px;
+
+    animation-delay: 1s;
+}
+
+
+.b4 {
+
+    width: 35px;
+    height: 35px;
+
+    right: 15%;
+    bottom: -50px;
+
+    animation-delay: 3s;
+}
+
+
+.b5 {
+
+    width: 22px;
+    height: 22px;
+
+    right: 35%;
+    bottom: -40px;
+
+    animation-delay: 4s;
+}
+
+
+@keyframes naik {
+
+    0% {
+
+        transform: translateY(0);
+
+        opacity: 0;
+    }
+
+    20% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        transform: translateY(-100vh);
+
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    text-align: center;
+
+    color: white;
+
+    padding: 25px;
+
+    font-size: 17px;
+
+    line-height: 2;
+}
+
+
+/* =========================
+   LAUT BAWAH
+========================= */
+
+.laut-bawah {
+
+    text-align: center;
+
+    color: white;
+
+    font-size: 40px;
+
+    letter-spacing: 10px;
+
+    padding: 20px;
+
+    background:
+        rgba(0,40,100,.35);
+}
+
+
+/* =========================
+   RESPONSIVE HP
+========================= */
+
+@media (max-width: 800px) {
+
+    .header {
+
+        padding: 40px 20px;
+
+        min-height: 500px;
+    }
+
+
+    .header-content {
+
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+
+    .foto-box {
+
+        width: 180px;
+
+        height: 180px;
+    }
+
+
+    .identitas-header h1 {
+
+        font-size: 32px;
+    }
+
+
+    .identitas-header p {
+
+        font-size: 20px;
+    }
+
+
+    .mermaid {
+
+        font-size: 75px;
+    }
+
+
+    .data-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+
+    .card {
+
+        padding: 25px 20px;
+    }
+
+
+    .card h2 {
+
+        font-size: 25px;
+    }
+
+
+    .deskripsi {
+
+        font-size: 16px;
+    }
+
+
+    .hiasan-kanan {
+
+        display: none;
+    }
+
+}

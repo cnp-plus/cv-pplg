@@ -1,0 +1,1061 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --navy: #102a43;
+    --navy-dark: #0b1f33;
+
+    --blue: #1769e0;
+    --blue-light: #eaf3ff;
+
+    --text: #1e293b;
+    --muted: #718096;
+
+    --border: #e6edf5;
+
+    --white: #ffffff;
+
+}
+
+
+body {
+
+    font-family: "Inter", sans-serif;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e8f1fb 0%,
+            #f6f9fc 50%,
+            #e4eef9 100%
+        );
+
+    color: var(--text);
+
+    min-height: 100vh;
+
+    padding: 55px 20px;
+
+}
+
+
+/* =====================================================
+   CV CONTAINER
+===================================================== */
+
+.cv {
+
+    width: 1050px;
+
+    max-width: 100%;
+
+    min-height: 720px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 300px 1fr;
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(16, 42, 67, 0.16);
+
+}
+
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+
+.sidebar {
+
+    position: relative;
+
+    background:
+        linear-gradient(
+            160deg,
+            #102a43 0%,
+            #123d68 55%,
+            #1769e0 100%
+        );
+
+    color: white;
+
+    padding: 35px 30px;
+
+    overflow: hidden;
+
+}
+
+
+/* Decorative circle */
+
+.sidebar::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+
+    height: 240px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    top: -100px;
+
+    left: -110px;
+
+}
+
+
+.sidebar::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(255,255,255,.10);
+
+    bottom: -80px;
+
+    right: -80px;
+
+}
+
+
+/* =====================================================
+   FOTO
+===================================================== */
+
+.photo-area {
+
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    justify-content: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.photo-border {
+
+    width: 155px;
+
+    height: 175px;
+
+    padding: 5px;
+
+    background: rgba(255,255,255,.2);
+
+    border-radius: 80px 80px 15px 15px;
+
+}
+
+
+.photo-border img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center top;
+
+    border-radius: 75px 75px 10px 10px;
+
+    border: 3px solid white;
+
+}
+
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile {
+
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+}
+
+
+.profile h1 {
+
+    font-size: 22px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    margin-bottom: 7px;
+
+}
+
+
+.profile p {
+
+    color: #bcd4ef;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   SIDE LINE
+===================================================== */
+
+.side-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    background: rgba(255,255,255,.15);
+
+    margin: 25px 0;
+
+}
+
+
+/* =====================================================
+   SIDE SECTION
+===================================================== */
+
+.side-section {
+
+    position: relative;
+
+    z-index: 2;
+
+    margin-bottom: 25px;
+
+}
+
+
+.side-section h3 {
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #8ec5ff;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.side-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 13px;
+
+}
+
+
+.icon {
+
+    width: 27px;
+
+    height: 27px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(255,255,255,.1);
+
+    border-radius: 7px;
+
+    color: #9dccff;
+
+    font-size: 11px;
+
+}
+
+
+.side-item small {
+
+    display: block;
+
+    color: #8faac4;
+
+    font-size: 8px;
+
+    margin-bottom: 2px;
+
+}
+
+
+.side-item p {
+
+    color: #f5f9ff;
+
+    font-size: 9px;
+
+    word-break: break-word;
+
+    line-height: 1.4;
+
+}
+
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skill {
+
+    margin-bottom: 13px;
+
+}
+
+
+.skill-label {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 5px;
+
+}
+
+
+.skill-label span {
+
+    font-size: 9px;
+
+    color: #edf5ff;
+
+}
+
+
+.skill-label span:last-child {
+
+    color: #8ec5ff;
+
+}
+
+
+.skill-track {
+
+    height: 4px;
+
+    width: 100%;
+
+    background: rgba(255,255,255,.15);
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+}
+
+
+.skill-fill {
+
+    height: 100%;
+
+    background: #8ec5ff;
+
+    border-radius: 10px;
+
+}
+
+
+/* =====================================================
+   PERSONAL
+===================================================== */
+
+.personal-item {
+
+    margin-bottom: 10px;
+
+}
+
+
+.personal-item small {
+
+    display: block;
+
+    color: #8faac4;
+
+    font-size: 7px;
+
+    margin-bottom: 2px;
+
+}
+
+
+.personal-item p {
+
+    color: white;
+
+    font-size: 9px;
+
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content {
+
+    background: #ffffff;
+
+    padding: 40px 45px 25px;
+
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.content-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    padding-bottom: 25px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.subtitle {
+
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 8px;
+
+}
+
+
+.content-header h2 {
+
+    font-size: 28px;
+
+    color: var(--navy);
+
+    font-weight: 400;
+
+    line-height: 1.2;
+
+}
+
+
+.content-header h2 strong {
+
+    font-weight: 800;
+
+}
+
+
+.content-header p {
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+}
+
+
+.header-number {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 50%;
+
+    background: var(--blue-light);
+
+    color: var(--blue);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-weight: 800;
+
+    font-size: 12px;
+
+}
+
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.section {
+
+    padding: 22px 0;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+
+.section:last-of-type {
+
+    border-bottom: none;
+
+}
+
+
+.section-title {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 13px;
+
+}
+
+
+.section-title span {
+
+    width: 25px;
+
+    height: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background: var(--blue-light);
+
+    color: var(--blue);
+
+    font-size: 8px;
+
+    font-weight: 800;
+
+}
+
+
+.section-title h3 {
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+    letter-spacing: 1.5px;
+
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about {
+
+    padding-left: 35px;
+
+}
+
+
+.about p {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    max-width: 620px;
+
+}
+
+
+/* =====================================================
+   EDUCATION
+===================================================== */
+
+.education-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+}
+
+
+.education-card {
+
+    padding: 14px;
+
+    background: #f8fbff;
+
+    border: 1px solid #e3edf9;
+
+    border-radius: 10px;
+
+    border-left: 3px solid var(--blue);
+
+}
+
+
+.year {
+
+    color: var(--blue);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+}
+
+
+.education-card h4 {
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+}
+
+
+.education-card p {
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    margin-top: 3px;
+
+}
+
+
+/* =====================================================
+   EXPERIENCE
+===================================================== */
+
+.experience-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+}
+
+
+.experience-card {
+
+    display: grid;
+
+    grid-template-columns: 65px 1fr;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 10px;
+
+    transition: .25s;
+
+}
+
+
+.experience-card:hover {
+
+    border-color: #b9d4f4;
+
+    transform: translateY(-2px);
+
+}
+
+
+.experience-year {
+
+    color: var(--blue);
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+}
+
+
+.experience-card h4 {
+
+    color: var(--navy);
+
+    font-size: 11px;
+
+}
+
+
+.company {
+
+    display: block;
+
+    color: var(--blue);
+
+    font-size: 8px;
+
+    margin: 3px 0 5px;
+
+}
+
+
+.experience-card p {
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    line-height: 1.5;
+
+}
+
+
+/* =====================================================
+   PROJECT
+===================================================== */
+
+.project-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+}
+
+
+.project-card {
+
+    position: relative;
+
+    min-height: 120px;
+
+    overflow: hidden;
+
+    padding: 15px;
+
+    background: var(--navy);
+
+    border-radius: 11px;
+
+    color: white;
+
+    transition: .25s;
+
+}
+
+
+.project-card:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 20px rgba(16,42,67,.15);
+
+}
+
+
+.project-number {
+
+    display: block;
+
+    color: #6faeff;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+
+}
+
+
+.project-card h4 {
+
+    font-size: 11px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.project-card p {
+
+    color: #b9cbe0;
+
+    font-size: 8px;
+
+    line-height: 1.5;
+
+}
+
+
+.arrow {
+
+    position: absolute;
+
+    right: 12px;
+
+    bottom: 10px;
+
+    color: #6faeff;
+
+    font-size: 16px;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding-top: 18px;
+
+    color: #94a3b8;
+
+    font-size: 8px;
+
+}
+
+
+footer div {
+
+    display: flex;
+
+    gap: 15px;
+
+}
+
+
+footer strong {
+
+    color: var(--navy);
+
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    body {
+
+        padding: 20px 10px;
+
+    }
+
+
+    .cv {
+
+        grid-template-columns: 240px 1fr;
+
+    }
+
+
+    .content {
+
+        padding: 30px;
+
+    }
+
+
+    .sidebar {
+
+        padding: 30px 22px;
+
+    }
+
+
+    .project-grid {
+
+        grid-template-columns: 1fr 1fr;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    body {
+
+        padding: 0;
+
+    }
+
+
+    .cv {
+
+        width: 100%;
+
+        display: block;
+
+        border-radius: 0;
+
+        box-shadow: none;
+
+    }
+
+
+    .sidebar {
+
+        padding: 35px 25px;
+
+    }
+
+
+    .photo-border {
+
+        width: 140px;
+
+        height: 160px;
+
+    }
+
+
+    .content {
+
+        padding: 30px 25px;
+
+    }
+
+
+    .education-grid,
+    .experience-grid,
+    .project-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .content-header h2 {
+
+        font-size: 23px;
+
+    }
+
+}
+
+
+@media print {
+
+    body {
+
+        background: white;
+
+        padding: 0;
+
+    }
+
+
+    .cv {
+
+        width: 100%;
+
+        max-width: none;
+
+        box-shadow: none;
+
+        border-radius: 0;
+
+    }
+
+}

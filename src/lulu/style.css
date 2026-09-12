@@ -1,0 +1,676 @@
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f5d9e1;
+    color: #333;
+    padding: 35px 15px;
+}
+
+
+/* =========================
+   WARNA
+========================= */
+
+:root {
+    --pink: #d85b8a;
+    --dark-pink: #a83f68;
+    --light-pink: #fbe6ed;
+    --very-light-pink: #fff3f6;
+    --blue: #4f6598;
+    --text: #3f3f3f;
+}
+
+
+/* =========================
+   CV CONTAINER
+========================= */
+
+.cv-container {
+    width: 100%;
+    max-width: 950px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 32% 68%;
+
+    background: white;
+
+    box-shadow:
+        0 15px 40px rgba(100, 50, 70, 0.15);
+
+    overflow: hidden;
+}
+
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    background: #fbe6ed;
+    padding: 45px 32px 40px;
+
+    position: relative;
+}
+
+
+/* dekorasi sidebar */
+
+.sidebar::before {
+    content: "";
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    border-radius: 50%;
+
+    background: #f4cad8;
+
+    left: -90px;
+    bottom: -60px;
+}
+
+.sidebar::after {
+    content: "";
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    border: 3px solid rgba(216, 91, 138, 0.18);
+
+    right: -55px;
+    top: 20px;
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-area {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 42px;
+}
+
+.photo-frame {
+    width: 205px;
+    height: 205px;
+
+    border-radius: 50%;
+
+    padding: 7px;
+
+    background: white;
+
+    border: 5px solid var(--pink);
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+
+/* =========================
+   SIDEBAR SECTION
+========================= */
+
+.side-section {
+    margin-bottom: 42px;
+
+    position: relative;
+    z-index: 3;
+}
+
+
+/* =========================
+   SIDEBAR TITLE
+========================= */
+
+.side-title {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+
+    color: var(--pink);
+
+    font-size: 18px;
+
+    font-weight: 800;
+
+    letter-spacing: 2px;
+}
+
+.title-line {
+    flex: 1;
+
+    height: 1px;
+
+    background: #dc8ca7;
+}
+
+.title-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+}
+
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-item {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+    font-size: 12px;
+
+    color: #444;
+}
+
+.contact-icon {
+    width: 30px;
+    height: 30px;
+
+    min-width: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   SKILLS
+========================= */
+
+.side-list-item {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    color: #444;
+}
+
+.check {
+    width: 20px;
+    height: 20px;
+
+    min-width: 20px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--pink);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+/* =========================
+   HOBBY
+========================= */
+
+.hobby-list {
+    margin-top: 3px;
+}
+
+.hobby-item {
+    padding: 9px 0;
+
+    border-bottom: 1px solid #dc9bb1;
+
+    font-size: 12px;
+
+    color: #444;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+    background: #fff;
+
+    padding: 50px 55px 55px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    margin-bottom: 42px;
+}
+
+.small-heading {
+    color: var(--blue);
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 8px;
+}
+
+.header h1 {
+    color: var(--pink);
+
+    font-size: 42px;
+
+    line-height: 1.05;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+}
+
+
+/* garis header */
+
+.header-line {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin: 20px 0 13px;
+}
+
+.header-line span {
+    height: 1px;
+
+    background: #db8aa5;
+
+    flex: 1;
+}
+
+.header-line b {
+    color: var(--pink);
+
+    font-size: 22px;
+}
+
+.profession {
+    color: #555;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CONTENT SECTION
+========================= */
+
+.content-section {
+    margin-bottom: 37px;
+
+    padding-bottom: 30px;
+
+    border-bottom: 1px solid #e4a9ba;
+}
+
+.content-section:last-child {
+    border-bottom: none;
+}
+
+
+/* =========================
+   SECTION HEADING
+========================= */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+.section-icon {
+    width: 38px;
+    height: 38px;
+
+    min-width: 38px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+}
+
+.section-label {
+    background: #fce8ef;
+
+    color: var(--pink);
+
+    padding: 8px 18px;
+
+    border-radius: 25px;
+
+    font-size: 15px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+}
+
+
+/* =========================
+   ABOUT
+========================= */
+
+.about-text {
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    color: #444;
+
+    text-align: justify;
+}
+
+
+/* =========================
+   EDUCATION
+========================= */
+
+.education-timeline {
+    position: relative;
+
+    padding-left: 35px;
+}
+
+.education-timeline::before {
+    content: "";
+
+    position: absolute;
+
+    left: 8px;
+    top: 5px;
+    bottom: 5px;
+
+    width: 2px;
+
+    background: #e48ba8;
+}
+
+.timeline-item {
+    position: relative;
+
+    margin-bottom: 27px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-dot {
+    position: absolute;
+
+    left: -32px;
+    top: 4px;
+
+    width: 13px;
+    height: 13px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    border: 3px solid white;
+
+    box-shadow: 0 0 0 1px var(--pink);
+}
+
+.education-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+.education-top h3 {
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #333;
+}
+
+.education-top span {
+    color: var(--pink);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.education-content p {
+    color: var(--pink);
+
+    font-size: 12px;
+
+    font-style: italic;
+
+    margin-top: 5px;
+}
+
+
+/* =========================
+   PROJECT
+========================= */
+
+.project-list {
+    padding-left: 5px;
+}
+
+.project-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.project-dot {
+    width: 7px;
+    height: 7px;
+
+    min-width: 7px;
+
+    border-radius: 50%;
+
+    background: var(--pink);
+
+    margin-top: 7px;
+}
+
+.project-item p {
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    color: #444;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    body {
+        padding: 15px 8px;
+    }
+
+    .cv-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 35px 25px;
+    }
+
+    .main-content {
+        padding: 35px 25px;
+    }
+
+    .photo-frame {
+        width: 180px;
+        height: 180px;
+    }
+
+    .header h1 {
+        font-size: 34px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    body {
+        padding: 0;
+    }
+
+    .cv-container {
+        box-shadow: none;
+    }
+
+    .sidebar {
+        padding: 30px 22px;
+    }
+
+    .main-content {
+        padding: 30px 22px;
+    }
+
+    .photo-frame {
+        width: 165px;
+        height: 165px;
+    }
+
+    .header h1 {
+        font-size: 29px;
+
+        letter-spacing: 2px;
+    }
+
+    .small-heading {
+        font-size: 11px;
+
+        letter-spacing: 1px;
+    }
+
+    .profession {
+        font-size: 10px;
+
+        letter-spacing: 1px;
+    }
+
+    .education-top {
+        flex-direction: column;
+
+        gap: 3px;
+    }
+
+    .education-top span {
+        font-size: 11px;
+    }
+
+    .section-label {
+        font-size: 12px;
+    }
+
+    .about-text {
+        font-size: 12px;
+    }
+
+}

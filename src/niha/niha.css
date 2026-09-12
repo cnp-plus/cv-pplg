@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e8e9a2;
+    color: #333;
+    padding: 30px;
+}
+
+.cv {
+    max-width: 850px;
+    margin: auto;
+    background-color: rgb(250, 244, 244);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background-color: #f3ff88;
+    color: rgb(17, 17, 17);
+    padding: 30px;
+    border-radius: 12px;
+}
+
+.foto {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.identitas h1 {
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.identitas h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+.identitas p {
+    margin: 5px 0;
+}
+
+/* Section */
+section {
+    margin-top: 30px;
+}
+
+.judul {
+    color: #313519;
+    border-bottom: 3px solid #9cc6e9;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+}
+
+section p {
+    line-height: 1.7;
+}
+
+/* Item */
+.item {
+    margin-bottom: 20px;
+}
+
+.item h3 {
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Skills */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills span {
+    background-color: #feffaa;
+    color: rgb(24, 23, 23);
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .cv {
+        padding: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .identitas h1 {
+        font-size: 28px;
+    }
+
+}

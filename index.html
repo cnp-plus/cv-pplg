@@ -192,6 +192,15 @@
     color: #fff;
     background: linear-gradient(135deg, var(--c1), var(--c2));
     letter-spacing: 0.02em;
+    overflow: hidden;
+    padding: 0;
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
   }
 
   .card h2 {
@@ -241,6 +250,22 @@
 
   /* ---------- Responsive ---------- */
   @media (max-width: 560px) {
+    .site-head {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding-top: 28px;
+      gap: 10px;
+    }
+    .brand {
+      max-width: 320px;
+      line-height: 1.5;
+      white-space: normal;
+    }
+    .count-pill {
+      white-space: normal;
+      text-align: center;
+    }
     .hero { padding: 44px 0 40px; }
     .hero h1 { letter-spacing: -0.015em; }
     .grid { gap: 12px; }
@@ -284,23 +309,23 @@
 <script>
   (function () {
     var data = [
-      { name: "Ahmad Yusuf Firdaus",  href: "src/yusuf/index.php",         c1: "#2563eb", c2: "#64748b" },
-      { name: "Alsyah",               href: "src/alsa/indexx.php",         c1: "#6366f1", c2: "#8b5cf6" },
-      { name: "Alya Nur Fauziah",     href: "src/alya/index.php",          c1: "#ec4899", c2: "#f472b6" },
-      { name: "Azzahra Meita Putri",      href: "src/zahraa/cvzahra.php",      c1: "#d946ef", c2: "#a21caf" },
-      { name: "Dwi Rafi Mazdudin",    href: "src/rafi/index.php",          c1: "#3b82f6", c2: "#60a5fa" },
-      { name: "Hasan",                href: "src/hasan/index.php",         c1: "#f59e0b", c2: "#f97316" },
-      { name: "Lulu Isnawati",        href: "src/lulu/index.php",          c1: "#10b981", c2: "#34d399" },
-      { name: "Muhammad Lutpi",         href: "src/lutpi/cv2.php",           c1: "#0ea5e9", c2: "#38bdf8" },
-      { name: "Nihayatul Karimah",      href: "src/niha/cvniha.php",         c1: "#8b5cf6", c2: "#a78bfa" },
-      { name: "Noval Fazri",          href: "src/noval/index.php",         c1: "#14b8a6", c2: "#2dd4bf" },
-      { name: "Nurmala Ayu Komalasari", href: "src/mala/index.php",        c1: "#f43f5e", c2: "#fb7185" },
-      { name: "Retno Ayu Anjani",     href: "src/retno/index.php",         c1: "#d946ef", c2: "#e879f9" },
-      { name: "Reva Alviani",         href: "src/reva/index.php",          c1: "#06b6d4", c2: "#22d3ee" },
-      { name: "Sahla Tri Nurrani",        href: "src/sahla/sahla5.php",        c1: "#ef4444", c2: "#f87171" },
-      { name: "Shinta Ramadhani",     href: "src/shinta/index.php",        c1: "#a855f7", c2: "#c084fc" },
-      { name: "Vebyola Oktaviani",    href: "src/vebyola/vebyola.php",     c1: "#f43f5e", c2: "#fda4af" },
-      { name: "Zazkya Fadillah",      href: "src/zazkya/index.php",        c1: "#0ea5e9", c2: "#6366f1" }
+      { name: "Ahmad Yusuf Firdaus",  href: "src/yusuf/index.php",         c1: "#2563eb", c2: "#64748b", photo: "src/yusuf/assets/image/me.jpeg" },
+      { name: "Alsyah",               href: "src/alsa/indexx.php",         c1: "#6366f1", c2: "#8b5cf6", photo: "src/alsa/foto1.jpeg" },
+      { name: "Alya Nur Fauziah",     href: "src/alya/index.php",          c1: "#ec4899", c2: "#f472b6", photo: "src/alya/asset/foto.jpeg" },
+      { name: "Azzahra Meita Putri",      href: "src/zahraa/cvzahra.php",      c1: "#d946ef", c2: "#a21caf", photo: "src/zahraa/zahra.jpeg" },
+      { name: "Dwi Rafi Mazdudin",    href: "src/rafi/index.php",          c1: "#3b82f6", c2: "#60a5fa", photo: "src/rafi/IMG_1029.jpg" },
+      { name: "Hasan",                href: "src/hasan/index.php",         c1: "#f59e0b", c2: "#f97316", photo: "src/hasan/hasan.png" },
+      { name: "Lulu Isnawati",        href: "src/lulu/index.php",          c1: "#10b981", c2: "#34d399", photo: "src/lulu/assets/foto_lulu.jpg" },
+      { name: "Muhammad Lutpi",         href: "src/lutpi/cv2.php",           c1: "#0ea5e9", c2: "#38bdf8", photo: null },
+      { name: "Nihayatul Karimah",      href: "src/niha/cvniha.php",         c1: "#8b5cf6", c2: "#a78bfa", photo: "src/niha/nihacv.jpg.jpeg" },
+      { name: "Noval Fazri",          href: "src/noval/index.php",         c1: "#14b8a6", c2: "#2dd4bf", photo: "src/noval/noval.jpeg" },
+      { name: "Nurmala Ayu Komalasari", href: "src/mala/index.php",        c1: "#f43f5e", c2: "#fb7185", photo: "src/mala/assets/malmal.jpeg" },
+      { name: "Retno Ayu Anjani",     href: "src/retno/index.php",         c1: "#d946ef", c2: "#e879f9", photo: "src/retno/image/imupp.jpeg" },
+      { name: "Reva Alviani",         href: "src/reva/index.php",          c1: "#06b6d4", c2: "#22d3ee", photo: "src/reva/foto4.jpg" },
+      { name: "Sahla Tri Nurrani",        href: "src/sahla/sahla5.php",        c1: "#ef4444", c2: "#f87171", photo: "src/sahla/fotosahla.jpeg" },
+      { name: "Shinta Ramadhani",     href: "src/shinta/index.php",        c1: "#a855f7", c2: "#c084fc", photo: "src/shinta/fotosinta.jpeg" },
+      { name: "Vebyola Oktaviani",    href: "src/vebyola/vebyola.php",     c1: "#f43f5e", c2: "#fda4af", photo: "src/vebyola/veb.jpeg" },
+      { name: "Zazkya Fadillah",      href: "src/zazkya/index.php",        c1: "#0ea5e9", c2: "#6366f1", photo: "src/zazkya/image/zazkya.jpeg" }
     ];
 
     var grid = document.getElementById("grid"),
@@ -308,12 +333,6 @@
         empty = document.getElementById("empty"),
         qEl = document.getElementById("q"),
         countPill = document.getElementById("countPill");
-
-    function initials(name) {
-      var parts = name.split(/\s+/).filter(Boolean);
-      if (parts.length === 1) return parts[0][0].toUpperCase();
-      return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
-    }
 
     function render(items) {
       grid.innerHTML = "";
@@ -325,7 +344,15 @@
         av.className = "avatar";
         av.style.setProperty("--c1", p.c1);
         av.style.setProperty("--c2", p.c2);
-        av.textContent = initials(p.name);
+
+        if (p.photo) {
+          var img = document.createElement("img");
+          img.src = p.photo;
+          img.alt = "Foto " + p.name;
+          img.loading = "lazy";
+          img.onerror = function () { this.remove(); };
+          av.appendChild(img);
+        }
 
         var h = document.createElement("h2");
         h.textContent = p.name;

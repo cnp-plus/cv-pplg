@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Nama Kamu</title>
+    <title>CV - Nihayatul Karimah</title>
     <link rel="stylesheet" href="niha.css">
 </head>
 

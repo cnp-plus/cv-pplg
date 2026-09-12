@@ -1,0 +1,19 @@
+[Unit]
+Description=CV PPLG PHP server (port 2027)
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/opt/cv_pplg
+ExecStart=/opt/cv_pplg/serve.sh
+Environment=PORT=2027
+Restart=always
+RestartSec=3
+
+# Hardening ringan (opsional, aman untuk php -S)
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

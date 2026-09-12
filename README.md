@@ -8,6 +8,10 @@ Kumpulan Curriculum Vitae murid jurusan PPLG (Pengembangan Perangkat Lunak dan G
 cv_pplg/
 ├── index.html   # Landing page portal
 ├── README.md
+├── serve.sh     # Runner PHP built-in server (port 2027)
+├── deploy/      # File deploy server (systemd + installer)
+│   ├── cv-pplg.service
+│   └── install.sh
 └── src/         # 17 folder CV individu
 ```
 
@@ -60,3 +64,33 @@ Lalu buka:
 - PHP vanilla (halaman CV)
 - HTML5 + CSS3 vanilla (sebagian inline, sebagian file `.css` terpisah)
 - Tanpa framework, tanpa build tool, tanpa `package.json`
+
+## Deploy Server (systemd, port 2027)
+
+File deploy ada di `deploy/`:
+
+- `deploy/cv-pplg.service` — unit systemd system-level (default: user `www-data`, dir `/opt/cv_pplg`, port 2027)
+- `deploy/install.sh` — installer: salin project ke server, pasang unit, `enable --now`
+- `serve.sh` — runner `php -S 0.0.0.0:$PORT` (default 2027)
+
+Di server (Debian/Ubuntu, dari root repo):
+
+```bash
+sudo apt install -y php-cli
+sudo ./deploy/install.sh
+```
+
+Kustomisasi:
+
+```bash
+APP_DIR=/opt/cv_pplg SERVICE_USER=www-data PORT=2027 sudo -E ./deploy/install.sh
+```
+
+Cek status:
+
+```bash
+systemctl status cv-pplg.service
+journalctl -u cv-pplg.service -f
+```
+
+Lalu buka `http://<ip-server>:2027/index.html`. Buka port 2027 di firewall bila perlu (`ufw allow 2027/tcp`).

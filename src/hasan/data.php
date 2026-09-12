@@ -8,7 +8,7 @@
 $profile = [
   'name'          => 'HASAN',
   'title'         => 'Linux Enthusiast',
-  'photo'         => 'HASAN.JPG',
+  'photo'         => 'hasan.png',
   'birth_place'   => 'Majalengka',
   'birth_date'    => '26 Mei 2009',
   'birth_date_en' => 'May 26, 2009',

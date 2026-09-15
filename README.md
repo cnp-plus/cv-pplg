@@ -35,7 +35,7 @@ cv_pplg/
 | 14 | Nurmala Ayu Komalasari | `src/mala/index.php` |
 | 15 | Retno Ayu Anjani | `src/retno/index.php` |
 | 16 | Reva Alviani | `src/reva/index.php` |
-| 17 | Rido (Mexx Corleone) | `src/rido/index.php` |
+| 17 | Rido Maulana | `src/rido/index.php` |
 | 18 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
 | 19 | Sartono Tegar | `src/tegar/index.php` |
 | 20 | Shinta Ramadhani | `src/shinta/index.php` |

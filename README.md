@@ -12,7 +12,7 @@ cv_pplg/
 ├── deploy/      # File deploy server (systemd + installer)
 │   ├── cv-pplg.service
 │   └── install.sh
-└── src/         # 17 folder CV individu
+└── src/         # 23 folder CV individu
 ```
 
 ## Daftar CV
@@ -24,18 +24,24 @@ cv_pplg/
 | 3 | Alya Nur Fauziah | `src/alya/index.php` |
 | 4 | Azzahra Meita Putri | `src/zahraa/cvzahra.php` |
 | 5 | Dwi Rafi Mazdudin | `src/rafi/index.php` |
-| 6 | Hasan | `src/hasan/index.php` |
-| 7 | Lulu Isnawati | `src/lulu/index.php` |
-| 8 | Muhammad Lutpi | `src/lutpi/cv2.php` |
-| 9 | Nihayatul Karimah | `src/niha/cvniha.php` |
-| 10 | Noval Fazri | `src/noval/index.php` |
-| 11 | Nurmala Ayu Komalasari | `src/mala/index.php` |
-| 12 | Retno Ayu Anjani | `src/retno/index.php` |
-| 13 | Reva Alviani | `src/reva/index.php` |
-| 14 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
-| 15 | Shinta Ramadhani | `src/shinta/index.php` |
-| 16 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
-| 17 | Zazkya Fadillah | `src/zazkya/index.php` |
+| 6 | Fedly Pratama | `src/fedly/index.html` |
+| 7 | Hasan | `src/hasan/index.php` |
+| 8 | Krisna Apriyono | `src/krisna/index.php` |
+| 9 | Lulu Isnawati | `src/lulu/index.php` |
+| 10 | Mitha Salsabila | `src/mitha/cv.php` |
+| 11 | Muhammad Lutpi | `src/lutpi/cv2.php` |
+| 12 | Nihayatul Karimah | `src/niha/cvniha.php` |
+| 13 | Noval Fazri | `src/noval/index.php` |
+| 14 | Nurmala Ayu Komalasari | `src/mala/index.php` |
+| 15 | Retno Ayu Anjani | `src/retno/index.php` |
+| 16 | Reva Alviani | `src/reva/index.php` |
+| 17 | Rido (Mexx Corleone) | `src/rido/index.php` |
+| 18 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
+| 19 | Sartono Tegar | `src/tegar/index.php` |
+| 20 | Shinta Ramadhani | `src/shinta/index.php` |
+| 21 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
+| 22 | Yesi Anggita | `src/yesi/index.php` |
+| 23 | Zazkya Fadillah | `src/zazkya/index.php` |
 
 ## Cara Menjalankan
 
@@ -56,7 +62,7 @@ Lalu buka:
 
 - Hero judul "CV PPLG"
 - Search filter live (case-insensitive)
-- Grid 17 kartu urut abjad (avatar inisial + nama + tombol Lihat CV)
+- Grid 23 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
 - Responsive mobile
 
 ## Tech Stack

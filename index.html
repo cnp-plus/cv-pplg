@@ -277,7 +277,7 @@
 
 <header class="wrap site-head">
   <div class="brand">Tugas dari <span>&nbsp;·&nbsp;</span>pak&nbsp;Ahmad Arief Wijayanto <span><b>S.Kom., MMSI</b></span></div>
-  <div class="count-pill" id="countPill">17 CV tersedia</div>
+  <div class="count-pill" id="countPill">23 CV tersedia</div>
 </header>
 
 <main class="wrap">
@@ -314,17 +314,23 @@
       { name: "Alya Nur Fauziah",     href: "src/alya/index.php",          c1: "#ec4899", c2: "#f472b6", photo: "src/alya/asset/foto.jpeg" },
       { name: "Azzahra Meita Putri",      href: "src/zahraa/cvzahra.php",      c1: "#d946ef", c2: "#a21caf", photo: "src/zahraa/zahra.jpeg" },
       { name: "Dwi Rafi Mazdudin",    href: "src/rafi/index.php",          c1: "#3b82f6", c2: "#60a5fa", photo: "src/rafi/IMG_1029.jpg" },
+      { name: "Fedly Pratama",          href: "src/fedly/index.html",        c1: "#dc2626", c2: "#f87171", photo: "src/fedly/IMG-20251206-WA0790.jpg" },
       { name: "Hasan",                href: "src/hasan/index.php",         c1: "#f59e0b", c2: "#f97316", photo: "src/hasan/hasan.png" },
+      { name: "Krisna Apriyono",        href: "src/krisna/index.php",        c1: "#7c3aed", c2: "#a78bfa", photo: "src/krisna/kis.jpeg" },
       { name: "Lulu Isnawati",        href: "src/lulu/index.php",          c1: "#10b981", c2: "#34d399", photo: "src/lulu/assets/foto_lulu.jpg" },
+      { name: "Mitha Salsabila",        href: "src/mitha/cv.php",             c1: "#059669", c2: "#34d399", photo: "src/mitha/ftomitha2.jpeg" },
       { name: "Muhammad Lutpi",         href: "src/lutpi/cv2.php",           c1: "#0ea5e9", c2: "#38bdf8", photo: null },
       { name: "Nihayatul Karimah",      href: "src/niha/cvniha.php",         c1: "#8b5cf6", c2: "#a78bfa", photo: "src/niha/nihacv.jpg.jpeg" },
       { name: "Noval Fazri",          href: "src/noval/index.php",         c1: "#14b8a6", c2: "#2dd4bf", photo: "src/noval/noval.jpeg" },
       { name: "Nurmala Ayu Komalasari", href: "src/mala/index.php",        c1: "#f43f5e", c2: "#fb7185", photo: "src/mala/assets/malmal.jpeg" },
       { name: "Retno Ayu Anjani",     href: "src/retno/index.php",         c1: "#d946ef", c2: "#e879f9", photo: "src/retno/image/imupp.jpeg" },
       { name: "Reva Alviani",         href: "src/reva/index.php",          c1: "#06b6d4", c2: "#22d3ee", photo: "src/reva/foto4.jpg" },
+      { name: "Rido Maulana",   href: "src/rido/index.php",          c1: "#475569", c2: "#94a3b8", photo: "src/rido/foto.png" },
       { name: "Sahla Tri Nurrani",        href: "src/sahla/sahla5.php",        c1: "#ef4444", c2: "#f87171", photo: "src/sahla/fotosahla.jpeg" },
+      { name: "Sartono Tegar",          href: "src/tegar/index.php",         c1: "#2563eb", c2: "#93c5fd", photo: "src/tegar/assets/Profile.jpg" },
       { name: "Shinta Ramadhani",     href: "src/shinta/index.php",        c1: "#a855f7", c2: "#c084fc", photo: "src/shinta/fotosinta.jpeg" },
       { name: "Vebyola Oktaviani",    href: "src/vebyola/vebyola.php",     c1: "#f43f5e", c2: "#fda4af", photo: "src/vebyola/veb.jpeg" },
+      { name: "Yesi Anggita",           href: "src/yesi/index.php",          c1: "#db2777", c2: "#f9a8d4", photo: "src/yesi/assets/foto1.png" },
       { name: "Zazkya Fadillah",      href: "src/zazkya/index.php",        c1: "#0ea5e9", c2: "#6366f1", photo: "src/zazkya/image/zazkya.jpeg" }
     ];
 
@@ -359,6 +365,8 @@
 
         var a = document.createElement("a");
         a.href = p.href;
+        a.target = "_blank";
+        a.rel = "noopener";
         a.setAttribute("aria-label", "Lihat CV " + p.name);
         a.innerHTML = "Lihat CV" +
           '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';

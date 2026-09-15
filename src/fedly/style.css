@@ -1,0 +1,347 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f4eee5;
+    color: #292929;
+    padding: 30px 15px;
+}
+
+/* CV */
+
+.cv {
+    max-width: 900px;
+    margin: auto;
+    background: #fffdf9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.15);
+}
+
+/* HEADER */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 50px;
+    background:
+        linear-gradient(
+            135deg,
+            #fff7f4,
+            #fce5e5
+        );
+
+    border-bottom: 5px solid #b51f35;
+}
+
+.foto-container {
+    position: relative;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.foto-container img {
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 6px solid white;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+.ganti-foto {
+    display: block;
+    margin-top: 10px;
+    padding: 8px 14px;
+    background: #b51f35;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.ganti-foto:hover {
+    background: #8d182a;
+}
+
+.jepang {
+    color: #b51f35;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.identitas h1 {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 42px;
+    letter-spacing: 2px;
+}
+
+.identitas h2 {
+    color: #b51f35;
+    font-size: 20px;
+    margin: 5px 0 15px;
+}
+
+.deskripsi {
+    line-height: 1.7;
+    max-width: 550px;
+}
+
+
+/* BAGIAN */
+
+.bagian {
+    padding: 35px 50px;
+    border-bottom: 1px solid #eee;
+}
+
+.judul {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.judul span {
+    color: #b51f35;
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.judul h3 {
+    font-size: 22px;
+}
+
+.bagian > p {
+    line-height: 1.8;
+}
+
+
+/* DATA */
+
+.data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.data strong {
+    font-size: 13px;
+    color: #b51f35;
+}
+
+.data p {
+    margin-top: 4px;
+}
+
+
+/* TIMELINE */
+
+.timeline {
+    border-left: 3px solid #b51f35;
+    padding-left: 25px;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.tahun {
+    min-width: 120px;
+    font-weight: bold;
+    color: #b51f35;
+}
+
+.timeline-item h4 {
+    margin-bottom: 5px;
+}
+
+
+/* SKILL */
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills span {
+    padding: 9px 18px;
+    border-radius: 30px;
+    background: #b51f35;
+    color: white;
+    font-size: 13px;
+}
+
+
+/* PENGALAMAN */
+
+.pengalaman {
+    padding: 20px;
+    border-left: 5px solid #b51f35;
+    background: #fff5f5;
+}
+
+.pengalaman h4 {
+    margin-bottom: 8px;
+}
+
+
+/* HOBI */
+
+.hobi {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.hobi div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    font-size: 30px;
+}
+
+.hobi span {
+    font-size: 13px;
+}
+
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+    padding: 35px;
+    background: #b51f35;
+    color: white;
+}
+
+footer p {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+
+/* SAKURA */
+
+.sakura {
+    position: fixed;
+    font-size: 35px;
+    animation: jatuh 8s linear infinite;
+    pointer-events: none;
+}
+
+.sakura1 {
+    left: 10%;
+}
+
+.sakura2 {
+    left: 50%;
+    animation-delay: 3s;
+}
+
+.sakura3 {
+    left: 80%;
+    animation-delay: 5s;
+}
+
+@keyframes jatuh {
+
+    0% {
+        top: -50px;
+        transform: rotate(0deg);
+    }
+
+    100% {
+        top: 100%;
+        transform: rotate(360deg);
+    }
+
+}
+
+
+/* TOMBOL CETAK */
+
+.print {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 30px;
+    background: #b51f35;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    body {
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        text-align: center;
+        padding: 35px 20px;
+    }
+
+    .identitas h1 {
+        font-size: 30px;
+    }
+
+    .bagian {
+        padding: 25px 20px;
+    }
+
+    .data {
+        grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
+
+
+/* CETAK */
+
+@media print {
+
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .cv {
+        box-shadow: none;
+        max-width: 100%;
+    }
+
+    .print,
+    .ganti-foto {
+        display: none;
+    }
+
+    .sakura {
+        display: none;
+    }
+
+}

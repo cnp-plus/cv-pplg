@@ -1,0 +1,943 @@
+/* ========================================
+   MODERN GLASSMORPHISM CV
+   BLACK & WHITE STYLE
+======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #111;
+    background:
+        radial-gradient(circle at 10% 10%, #ffffff 0%, transparent 35%),
+        radial-gradient(circle at 90% 80%, #d8d8d8 0%, transparent 35%),
+        #eeeeee;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Background dekorasi */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    z-index: -1;
+}
+
+body::before {
+    background: #ffffff;
+    top: -100px;
+    left: -100px;
+}
+
+body::after {
+    background: #bcbcbc;
+    right: -100px;
+    bottom: -100px;
+}
+
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    max-width: 1200px;
+
+    padding: 15px 25px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.08);
+
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 8px;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #555;
+
+    padding: 9px 15px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.navbar nav a:hover {
+    background: #111;
+    color: #fff;
+}
+
+
+/* ========================================
+   HOME
+======================================== */
+
+.home {
+    min-height: 100vh;
+
+    padding: 150px 7% 100px;
+
+    display: flex;
+    align-items: center;
+}
+
+.home-content {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: 360px 1fr;
+
+    gap: 45px;
+}
+
+
+/* ========================================
+   PHOTO GLASS CARD
+======================================== */
+
+.photo-box {
+    width: 100%;
+    height: 430px;
+
+    padding: 12px;
+
+    background: rgba(255, 255, 255, 0.4);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.12);
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+.photo-box::before {
+    content: "PROFILE";
+
+    position: absolute;
+
+    top: 25px;
+    left: 25px;
+
+    z-index: 2;
+
+    padding: 7px 12px;
+
+    background: rgba(255, 255, 255, 0.7);
+
+    backdrop-filter: blur(10px);
+
+    border-radius: 10px;
+
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.photo-box img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 27px;
+
+    filter: grayscale(100%);
+
+    transition: 0.5s;
+}
+
+.photo-box:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+
+/* ========================================
+   INTRO GLASS CARD
+======================================== */
+
+.intro {
+    padding: 50px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.08);
+}
+
+.hello {
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    background: #111;
+    color: white;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+
+    margin-bottom: 18px;
+}
+
+.intro h1 {
+    font-size: clamp(42px, 6vw, 75px);
+
+    line-height: 0.95;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 15px;
+
+    font-weight: 800;
+}
+
+.intro h2 {
+    font-size: 21px;
+
+    color: #666;
+
+    font-weight: 500;
+
+    margin-bottom: 25px;
+}
+
+.about {
+    max-width: 650px;
+
+    color: #555;
+
+    font-size: 15px;
+
+    margin-bottom: 30px;
+}
+
+
+/* ========================================
+   INFO
+======================================== */
+
+.info {
+    display: flex;
+
+    gap: 15px;
+
+    margin-bottom: 30px;
+}
+
+.info div {
+    min-width: 150px;
+
+    padding: 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    background: rgba(255, 255, 255, 0.6);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 17px;
+}
+
+.info i {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    color: white;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+}
+
+.info span {
+    display: flex;
+    flex-direction: column;
+
+    font-size: 12px;
+}
+
+.info b {
+    font-size: 10px;
+
+    color: #999;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+
+/* ========================================
+   BUTTON
+======================================== */
+
+.btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 14px 22px;
+
+    background: #111;
+
+    color: #fff;
+
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.15);
+
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #333;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ========================================
+   SECTION
+======================================== */
+
+.section {
+    padding: 100px 7%;
+}
+
+.gray {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.section-subtitle {
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #888;
+
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 42px;
+
+    letter-spacing: -2px;
+
+    margin-bottom: 40px;
+
+    font-weight: 800;
+}
+
+
+/* ========================================
+   EDUCATION
+======================================== */
+
+.card {
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.07);
+}
+
+.education-card {
+    display: flex;
+
+    gap: 25px;
+
+    padding: 30px;
+}
+
+.card-icon {
+    width: 60px;
+    height: 60px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+
+    color: #fff;
+
+    border-radius: 17px;
+
+    font-size: 20px;
+}
+
+.education-card h3 {
+    font-size: 22px;
+
+    margin-bottom: 4px;
+}
+
+.education-card h4 {
+    font-size: 14px;
+
+    color: #777;
+
+    margin-bottom: 10px;
+}
+
+.education-card p {
+    font-size: 14px;
+
+    color: #666;
+}
+
+
+/* ========================================
+   LANGUAGES
+======================================== */
+
+.languages {
+    margin-top: 35px;
+
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 25px;
+}
+
+.languages h3 {
+    font-size: 17px;
+
+    margin-bottom: 18px;
+}
+
+.language-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.language-list span {
+    padding: 10px 16px;
+
+    background: #111;
+
+    color: white;
+
+    border-radius: 12px;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+/* ========================================
+   SKILLS
+======================================== */
+
+.skills-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+.skill-card {
+    padding: 30px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 22px;
+
+    text-align: left;
+
+    transition: 0.3s;
+}
+
+.skill-card:hover {
+    background: #111;
+
+    color: white;
+
+    transform: translateY(-6px);
+}
+
+.skill-card i {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+
+    color: white;
+
+    border-radius: 13px;
+
+    margin-bottom: 18px;
+}
+
+.skill-card:hover i {
+    background: white;
+    color: #111;
+}
+
+.skill-card h3 {
+    font-size: 16px;
+}
+
+
+/* ========================================
+   EXPERIENCE
+======================================== */
+
+.experience {
+    position: relative;
+
+    padding-left: 30px;
+}
+
+.experience::before {
+    content: "";
+
+    position: absolute;
+
+    left: 5px;
+
+    top: 0;
+    bottom: 0;
+
+    width: 1px;
+
+    background: #aaa;
+}
+
+.experience-item {
+    position: relative;
+
+    margin-bottom: 25px;
+}
+
+.timeline-dot {
+    position: absolute;
+
+    left: -31px;
+
+    top: 25px;
+
+    width: 12px;
+    height: 12px;
+
+    background: #111;
+
+    border: 3px solid #eee;
+
+    border-radius: 50%;
+}
+
+.experience-content {
+    padding: 28px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 22px;
+
+    transition: 0.3s;
+}
+
+.experience-content:hover {
+    transform: translateX(5px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.08);
+}
+
+.experience-content h3 {
+    font-size: 19px;
+
+    margin-bottom: 8px;
+}
+
+.experience-content p {
+    font-size: 14px;
+
+    color: #666;
+}
+
+
+/* ========================================
+   CONTACT
+======================================== */
+
+.contact-section {
+    background: transparent;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 18px;
+}
+
+.contact-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    padding: 25px;
+
+    background: rgba(255, 255, 255, 0.5);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.8);
+
+    border-radius: 22px;
+
+    text-decoration: none;
+
+    color: #111;
+
+    transition: 0.3s;
+}
+
+.contact-card:hover {
+    background: #111;
+
+    color: #fff;
+
+    transform: translateY(-5px);
+}
+
+.contact-card > i {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+
+    color: #fff;
+
+    border-radius: 14px;
+
+    font-size: 20px;
+}
+
+.contact-card:hover > i {
+    background: white;
+    color: #111;
+}
+
+.contact-card h3 {
+    font-size: 15px;
+}
+
+.contact-card p {
+    font-size: 12px;
+
+    color: #777;
+}
+
+.contact-card:hover p {
+    color: #aaa;
+}
+
+
+/* ========================================
+   FOOTER
+======================================== */
+
+footer {
+    padding: 30px;
+
+    text-align: center;
+
+    background: rgba(17, 17, 17, 0.95);
+
+    color: #aaa;
+
+    font-size: 11px;
+
+    letter-spacing: 0.5px;
+}
+
+
+/* ========================================
+   RESPONSIVE TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .navbar {
+        width: 94%;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .home-content {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-box {
+        max-width: 350px;
+
+        height: 350px;
+
+        margin: auto;
+    }
+
+    .intro {
+        text-align: center;
+    }
+
+    .about {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .info {
+        justify-content: center;
+    }
+
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ========================================
+   RESPONSIVE HP
+======================================== */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        top: 10px;
+
+        padding: 13px 18px;
+
+        border-radius: 17px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .home {
+        padding: 110px 5% 60px;
+    }
+
+    .home-content {
+        gap: 20px;
+    }
+
+    .photo-box {
+        height: 300px;
+
+        border-radius: 27px;
+    }
+
+    .photo-box img {
+        border-radius: 20px;
+    }
+
+    .intro {
+        padding: 30px 22px;
+
+        border-radius: 27px;
+    }
+
+    .intro h1 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+
+    .intro h2 {
+        font-size: 18px;
+    }
+
+    .about {
+        font-size: 13px;
+    }
+
+    .info {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .info div {
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .section {
+        padding: 70px 5%;
+    }
+
+    .section-title {
+        font-size: 34px;
+    }
+
+    .education-card {
+        flex-direction: column;
+
+        padding: 25px;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .experience {
+        padding-left: 25px;
+    }
+}

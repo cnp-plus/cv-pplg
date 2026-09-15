@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f2f4f7;
+    color: #2d2d2d;
+    line-height: 1.6;
+    padding: 30px 15px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 32px;
+    background: linear-gradient(135deg, #2b3a67, #4a63b0);
+    color: #fff;
+    flex-wrap: wrap;
+}
+
+.foto-profil {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid rgba(255,255,255,0.6);
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 4px;
+}
+
+.jabatan {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.kontak-list {
+    list-style: none;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0.95;
+}
+
+.section {
+    padding: 24px 32px;
+    border-bottom: 1px solid #eee;
+}
+
+.section:last-child {
+    border-bottom: none;
+}
+
+.section h2 {
+    font-size: 1.15rem;
+    color: #2b3a67;
+    margin-bottom: 14px;
+    border-left: 4px solid #4a63b0;
+    padding-left: 10px;
+}
+
+.item {
+    margin-bottom: 16px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+.item-header strong {
+    font-size: 1rem;
+}
+
+.periode {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+.instansi {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-badge {
+    background: #e8ecf7;
+    color: #2b3a67;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.form-kontak {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-width: 450px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+}
+
+.form-group input,
+.form-group textarea {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #4a63b0;
+}
+
+.form-kontak button {
+    background: #2b3a67;
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    width: fit-content;
+    transition: background 0.2s;
+}
+
+.form-kontak button:hover {
+    background: #4a63b0;
+}
+
+.pesan-sukses {
+    background: #e6f7ec;
+    color: #1e7e42;
+    padding: 10px 14px;
+    border-radius: 6px;
+    margin-bottom: 14px;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .item-header {
+        flex-direction: column;
+    }
+}

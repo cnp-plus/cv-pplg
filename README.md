@@ -12,7 +12,7 @@ cv_pplg/
 ├── deploy/      # File deploy server (systemd + installer)
 │   ├── cv-pplg.service
 │   └── install.sh
-└── src/         # 23 folder CV individu
+└── src/         # 24 folder CV individu
 ```
 
 ## Daftar CV
@@ -40,8 +40,9 @@ cv_pplg/
 | 19 | Sartono Tegar | `src/tegar/index.php` |
 | 20 | Shinta Ramadhani | `src/shinta/index.php` |
 | 21 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
-| 22 | Yesi Anggita | `src/yesi/index.php` |
-| 23 | Zazkya Fadillah | `src/zazkya/index.php` |
+| 22 | Wildan Aziz Mubakkir | `src/wildan/cv_wldn.php` |
+| 23 | Yesi Anggita | `src/yesi/index.php` |
+| 24 | Zazkya Fadillah | `src/zazkya/index.php` |
 
 ## Cara Menjalankan
 
@@ -62,7 +63,7 @@ Lalu buka:
 
 - Hero judul "CV PPLG"
 - Search filter live (case-insensitive)
-- Grid 23 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
+- Grid 24 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
 - Responsive mobile
 
 ## Tech Stack

@@ -12,7 +12,7 @@ cv_pplg/
 ├── deploy/      # File deploy server (systemd + installer)
 │   ├── cv-pplg.service
 │   └── install.sh
-└── src/         # 24 folder CV individu
+└── src/         # 26 folder CV individu
 ```
 
 ## Daftar CV
@@ -23,26 +23,28 @@ cv_pplg/
 | 2 | Alsyah | `src/alsa/indexx.php` |
 | 3 | Alya Nur Fauziah | `src/alya/index.php` |
 | 4 | Azzahra Meita Putri | `src/zahraa/cvzahra.php` |
-| 5 | Dwi Rafi Mazdudin | `src/rafi/index.php` |
-| 6 | Fedly Pratama | `src/fedly/index.html` |
-| 7 | Hasan | `src/hasan/index.php` |
-| 8 | Krisna Apriyono | `src/krisna/index.php` |
-| 9 | Lulu Isnawati | `src/lulu/index.php` |
-| 10 | Mitha Salsabila | `src/mitha/cv.php` |
-| 11 | Muhammad Lutpi | `src/lutpi/cv2.php` |
-| 12 | Nihayatul Karimah | `src/niha/cvniha.php` |
-| 13 | Noval Fazri | `src/noval/index.php` |
-| 14 | Nurmala Ayu Komalasari | `src/mala/index.php` |
-| 15 | Retno Ayu Anjani | `src/retno/index.php` |
-| 16 | Reva Alviani | `src/reva/index.php` |
-| 17 | Rido Maulana | `src/rido/index.php` |
-| 18 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
-| 19 | Sartono Tegar | `src/tegar/index.php` |
-| 20 | Shinta Ramadhani | `src/shinta/index.php` |
-| 21 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
-| 22 | Wildan Aziz Mubakkir | `src/wildan/cv_wldn.php` |
-| 23 | Yesi Anggita | `src/yesi/index.php` |
-| 24 | Zazkya Fadillah | `src/zazkya/index.php` |
+| 5 | Desy Apriyani | `src/desy/cv.php` |
+| 6 | Dwi Rafi Mazdudin | `src/rafi/index.php` |
+| 7 | Fedly Pratama | `src/fedly/index.html` |
+| 8 | Frysa Salsabila Fauzi | `src/frysa/index.php` |
+| 9 | Hasan | `src/hasan/index.php` |
+| 10 | Krisna Apriyono | `src/krisna/index.php` |
+| 11 | Lulu Isnawati | `src/lulu/index.php` |
+| 12 | Mitha Salsabila | `src/mitha/cv.php` |
+| 13 | Muhammad Lutpi | `src/lutpi/cv2.php` |
+| 14 | Nihayatul Karimah | `src/niha/cvniha.php` |
+| 15 | Noval Fazri | `src/noval/index.php` |
+| 16 | Nurmala Ayu Komalasari | `src/mala/index.php` |
+| 17 | Retno Ayu Anjani | `src/retno/index.php` |
+| 18 | Reva Alviani | `src/reva/index.php` |
+| 19 | Rido Maulana | `src/rido/index.php` |
+| 20 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
+| 21 | Sartono Tegar | `src/tegar/index.php` |
+| 22 | Shinta Ramadhani | `src/shinta/index.php` |
+| 23 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
+| 24 | Wildan Aziz Mubakkir | `src/wildan/cv_wldn.php` |
+| 25 | Yesi Anggita | `src/yesi/index.php` |
+| 26 | Zazkya Fadillah | `src/zazkya/index.php` |
 
 ## Cara Menjalankan
 
@@ -63,7 +65,7 @@ Lalu buka:
 
 - Hero judul "CV PPLG"
 - Search filter live (case-insensitive)
-- Grid 24 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
+- Grid 26 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
 - Responsive mobile
 
 ## Tech Stack

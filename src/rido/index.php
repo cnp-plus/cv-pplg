@@ -3,7 +3,7 @@
 // DATA CV
 // =========================
 
-$nama = "Mexx Corleone";
+$nama = "Rido Maulana";
 $profesi = "Web Developer";
 $lokasi = "Indonesia";
 

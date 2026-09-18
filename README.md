@@ -80,6 +80,7 @@ File deploy ada di `deploy/`:
 
 - `deploy/cv-pplg.service` — unit systemd system-level (default: user `www-data`, dir `/opt/cv_pplg`, port 2027)
 - `deploy/install.sh` — installer: salin project ke server, pasang unit, `enable --now`
+- `deploy/update.sh` — update file di server (rsync `--delete`, restart service)
 - `serve.sh` — runner `php -S 0.0.0.0:$PORT` (default 2027)
 
 Di server (Debian/Ubuntu, dari root repo):
@@ -94,6 +95,25 @@ Kustomisasi:
 ```bash
 APP_DIR=/opt/cv_pplg SERVICE_USER=www-data PORT=2027 sudo -E ./deploy/install.sh
 ```
+
+## Update File di Server
+
+`install.sh` hanya untuk pasang awal. Setiap ada perubahan file
+(tambah/hapus/edit CV), jalankan di server:
+
+```bash
+cd /opt/cv_pplg  # atau clone repo, lalu dari root repo:
+git pull origin main
+sudo ./deploy/update.sh
+```
+
+`update.sh` memakai `rsync --delete` sehingga file yang dihapus di repo
+ikut terhapus di server (contoh: ganti foto `foto_lulu.jpg` → `lulu1.jpeg`),
+lalu restart service. Tanpa ini, file lama yang sudah dihapus bisa tertinggal
+dan menimpa tampilan — mis. CSS lama tetap ter-serve walau `index.php` sudah baru.
+
+Jika domain di belakang Cloudflare, purge cache untuk path yang berubah
+(mis. `/src/lulu/*`) setelah update.
 
 Cek status:
 

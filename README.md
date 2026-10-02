@@ -6,13 +6,15 @@ Kumpulan Curriculum Vitae murid jurusan PPLG (Pengembangan Perangkat Lunak dan G
 
 ```
 cv_pplg/
-├── index.html   # Landing page portal
+├── index.html    # Landing page portal
 ├── README.md
-├── serve.sh     # Runner PHP built-in server (port 2027)
-├── deploy/      # File deploy server (systemd + installer)
-│   ├── cv-pplg.service
-│   └── install.sh
-└── src/         # 26 folder CV individu
+├── Containerfile # Image Podman (PHP CLI + php -S)
+├── .dockerignore
+├── deploy/       # Deploy Podman + Quadlet (systemd)
+│   ├── cv-pplg.container
+│   ├── install.sh
+│   └── update.sh
+└── src/          # 26 folder CV individu
 ```
 
 ## Daftar CV
@@ -48,10 +50,11 @@ cv_pplg/
 
 ## Cara Menjalankan
 
-Butuh PHP karena tugas nya menggunakan `.php`:
+Butuh Podman:
 
 ```bash
-php -S localhost:8000
+podman build -t localhost/cv-pplg:latest .
+podman run --rm -p 8000:8000 localhost/cv-pplg:latest
 ```
 
 Lalu buka:
@@ -74,26 +77,26 @@ Lalu buka:
 - HTML5 + CSS3 vanilla (sebagian inline, sebagian file `.css` terpisah)
 - Tanpa framework, tanpa build tool, tanpa `package.json`
 
-## Deploy Server (systemd, port 2027)
+## Deploy Server (Podman + Quadlet, port 2027)
 
 File deploy ada di `deploy/`:
 
-- `deploy/cv-pplg.service` — unit systemd system-level (default: user `www-data`, dir `/opt/cv_pplg`, port 2027)
-- `deploy/install.sh` — installer: salin project ke server, pasang unit, `enable --now`
-- `deploy/update.sh` — update file di server (rsync `--delete`, restart service)
-- `serve.sh` — runner `php -S 0.0.0.0:$PORT` (default 2027)
+- `Containerfile` — image Podman (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
+- `deploy/cv-pplg.container` — unit Quadlet (dibangkitkan menjadi `cv-pplg.service`)
+- `deploy/install.sh` — build image, pasang quadlet, `enable --now`
+- `deploy/update.sh` — rebuild image + restart service
 
 Di server (Debian/Ubuntu, dari root repo):
 
 ```bash
-sudo apt install -y php-cli
+sudo apt install -y podman
 sudo ./deploy/install.sh
 ```
 
 Kustomisasi:
 
 ```bash
-APP_DIR=/opt/cv_pplg SERVICE_USER=www-data PORT=2027 sudo -E ./deploy/install.sh
+IMAGE=localhost/cv-pplg:latest PORT=2027 sudo -E ./deploy/install.sh
 ```
 
 ## Update File di Server
@@ -102,15 +105,13 @@ APP_DIR=/opt/cv_pplg SERVICE_USER=www-data PORT=2027 sudo -E ./deploy/install.sh
 (tambah/hapus/edit CV), jalankan di server:
 
 ```bash
-cd /opt/cv_pplg  # atau clone repo, lalu dari root repo:
 git pull origin main
 sudo ./deploy/update.sh
 ```
 
-`update.sh` memakai `rsync --delete` sehingga file yang dihapus di repo
-ikut terhapus di server (contoh: ganti foto `foto_lulu.jpg` → `lulu1.jpeg`),
-lalu restart service. Tanpa ini, file lama yang sudah dihapus bisa tertinggal
-dan menimpa tampilan — mis. CSS lama tetap ter-serve walau `index.php` sudah baru.
+`update.sh` me-rebuild image dari repo terbaru lalu restart service,
+sehingga file yang dihapus di repo ikut hilang dari server
+(contoh: ganti foto `foto_lulu.jpg` → `lulu1.jpeg`).
 
 Jika domain di belakang Cloudflare, purge cache untuk path yang berubah
 (mis. `/src/lulu/*`) setelah update.

@@ -1,0 +1,5 @@
+.git
+.opencode
+deploy
+Containerfile
+.dockerignore

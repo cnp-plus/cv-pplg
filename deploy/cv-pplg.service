@@ -1,0 +1,15 @@
+[Unit]
+Description=CV PPLG PHP server (Podman, port 2027)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Restart=always
+RestartSec=3
+TimeoutStartSec=60
+ExecStartPre=-/usr/bin/podman rm -f cv-pplg
+ExecStart=/usr/bin/podman run --rm --name cv-pplg -p 2027:8000 localhost/cv-pplg:latest
+ExecStop=/usr/bin/podman stop -t 10 cv-pplg
+
+[Install]
+WantedBy=multi-user.target

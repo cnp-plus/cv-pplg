@@ -10,8 +10,8 @@ cv_pplg/
 ├── README.md
 ├── Containerfile # Image Podman (PHP CLI + php -S)
 ├── .dockerignore
-├── deploy/       # Deploy Podman + Quadlet (systemd)
-│   ├── cv-pplg.container
+├── deploy/       # Deploy Podman + systemd
+│   ├── cv-pplg.service
 │   ├── install.sh
 │   └── update.sh
 └── src/          # 26 folder CV individu
@@ -77,13 +77,13 @@ Lalu buka:
 - HTML5 + CSS3 vanilla (sebagian inline, sebagian file `.css` terpisah)
 - Tanpa framework, tanpa build tool, tanpa `package.json`
 
-## Deploy Server (Podman + Quadlet, port 2027)
+## Deploy Server (Podman + systemd, port 2027)
 
 File deploy ada di `deploy/`:
 
 - `Containerfile` — image Podman (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
-- `deploy/cv-pplg.container` — unit Quadlet (dibangkitkan menjadi `cv-pplg.service`)
-- `deploy/install.sh` — build image, pasang quadlet, `enable --now`
+- `deploy/cv-pplg.service` — unit systemd yang menjalankan `podman run` (container `cv-pplg`)
+- `deploy/install.sh` — build image, pasang unit, `enable --now`
 - `deploy/update.sh` — rebuild image + restart service
 
 Di server (Debian/Ubuntu, dari root repo):

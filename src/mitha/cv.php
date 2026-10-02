@@ -470,7 +470,7 @@ $hobi = [
         -->
 
         <div class="photo">
-            <img src="ftomitha2.jpeg" alt="Foto <?php echo $nama; ?>">
+            <img src="foto-mitha.jpeg" alt="Foto <?php echo $nama; ?>">
         </div>
 
 

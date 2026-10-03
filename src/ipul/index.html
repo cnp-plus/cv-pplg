@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUHAMAD SAIFUL ANWAR — Pelajar</title>
+<meta name="description" content="Halo! Saya seorang pengembang web yang senang membangun produk digital dari nol, mulai dari merancang tampilan hingga menyusun logika di baliknya...">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+
+<!-- Kursor kustom desktop: dinonaktifkan otomatis lewat JS di layar sentuh
+     atau saat pengguna memilih "reduce motion". -->
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<nav class="nav">
+    <div class="wrap">
+        <span class="nav-name">MUHAMAD SAIFUL ANWAR</span>
+        <ul class="nav-links">
+            <li><a href="#tentang">Tentang</a></li>
+            <li><a href="#keahlian">Keahlian</a></li>
+            <li><a href="#proyek">Proyek</a></li>
+            <li><a href="#pendidikan">Riwayat Pendidikan</a></li>
+            <!-- Bagian tambahan: tambahkan <li><a href="#id-bagian">Judul</a></li> di sini -->
+        </ul>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-sky" aria-hidden="true" data-parallax="6">
+        <div class="cloud-layer c1"><div class="cloud"></div></div>
+        <div class="cloud-layer c2"><div class="cloud"></div></div>
+        <div class="cloud-layer c3"><div class="cloud"></div></div>
+        <div class="cloud-layer c4"><div class="cloud"></div></div>
+        <div class="cloud-layer c5"><div class="cloud"></div></div>
+    </div>
+
+    <div class="wrap hero-content">
+        <div class="hero-photo">
+            <div class="hero-photo-frame" data-parallax="18">
+                <img src="assets/img/profile.png" alt="Foto MUHAMAD SAIFUL ANWAR">
+            </div>
+        </div>
+
+        <div class="hero-text">
+            <h1 class="hero-name">MUHAMAD SAIFUL ANWAR</h1>
+            <p class="hero-tagline">Pelajar</p>
+            <div class="hero-actions">
+                <a href="#proyek" class="btn btn-primary">Lihat proyek saya</a>
+                <a href="mailto:my.muhamad.saiful.anwar@gmail.com" class="btn btn-ghost">Hubungi saya</a>
+            </div>
+        </div>
+    </div>
+
+    <span class="scroll-hint" aria-hidden="true"></span>
+</header>
+
+<main>
+    <section id="tentang" class="about">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Tentang saya</h2>
+            </div>
+            <p class="reveal">Perkenalkan nama saya MUHAMAD SAIFUL ANWAR, saya suka dengan semua hal yang berhubungan dengan menggambar dan mendesain suatu yang inovatif. Sering kali "ide" yang muncul dikepala, saya aplikasikan ke dalam suatu karya.</p>
+        </div>
+    </section>
+
+    <section id="keahlian" class="skills">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Keahlian</h2>
+                <p>Kombinasi kemampuan teknis dan non-teknis yang saya bawa ke setiap pekerjaan.</p>
+            </div>
+
+            <div class="skills-grid">
+                <div class="skill-group reveal">
+                    <h3>Keahlian teknis</h3>
+                    <ul class="tag-list tag-technical stagger">
+                        <li>IBIS PAINT</li>
+                        <li>PIXELLAB</li>
+                        <li>CORELDRAW</li>
+                        <li>ADOBE PHOTOSHOP</li>
+                        <li>FASHION DESIGN</li>
+                        <li>PRODUCT DESIGN</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group reveal">
+                    <h3>Keahlian non-teknis</h3>
+                    <ul class="tag-list tag-nontechnical stagger">
+                        <li>Bertanggung jawab</li>
+                        <li>Kerja sama Tim yang baik</li>
+                        <li>Pemecahan Masalah</li>
+                        <li>Kreativitas</li>
+                        <li>Inovaif</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyek" class="projects">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Proyek</h2>
+                <p>beberapa contoh kecil yang pernah saya kerjakan.</p>
+            </div>
+
+            <!-- Tambah proyek: salin satu blok <div class="project-card tilt-card"> -->
+            <div class="project-grid stagger">
+                <div class="project-card tilt-card">
+                    <h3>Proyek Pertama</h3>
+                    <p>Saya disini membuat desain gambar untuk LONGSLEEVE.</p>
+                    <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Lihat proyek</a>
+                </div>
+                <div class="project-card tilt-card">
+                    <h3>Proyek Kedua</h3>
+                    <p>Saya disini membuat desain gambar untuk KNITWEAR.</p>
+                    <a class="btn btn-primary" href="#" target="_blank" rel="noopener">Lihat proyek</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pendidikan" class="education">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Riwayat Pendidikan</h2>
+                <p>Perjalanan pendidikan yang pernah saya tempuh.</p>
+            </div>
+
+            <!-- Tambah jenjang: salin satu blok <div class="timeline-item"> -->
+            <div class="timeline stagger">
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <p class="timeline-label">SD 2014 - 2020</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <p class="timeline-label">SMP 2020 - 2024</p>
+                </div>
+                <div class="timeline-item">
+                    <span class="timeline-dot"></span>
+                    <p class="timeline-label">SMK 2024 - SEKARANG</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--
+        Bagian tambahan (opsional). Salin blok di bawah, ganti id, judul, dan isinya,
+        lalu tambahkan link-nya di menu navigasi di atas.
+
+    <section id="nama-bagian" class="custom-section">
+        <div class="wrap">
+            <div class="section-head reveal">
+                <h2>Judul Bagian</h2>
+            </div>
+            <p class="reveal custom-section-text">Isi paragraf di sini.</p>
+        </div>
+    </section>
+    -->
+</main>
+
+<button class="back-to-top" aria-label="Kembali ke atas" type="button">&uarr;</button>
+
+<footer>
+    <div class="wrap">
+        <p class="footer-note">&copy; <span id="year">2026</span> MUHAMAD SAIFUL ANWAR</p>
+        <ul class="footer-links">
+            <li><a href="mailto:my.muhamad.saiful.anwar@gmail.com">my.muhamad.saiful.anwar@gmail.com</a></li>
+        </ul>
+    </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

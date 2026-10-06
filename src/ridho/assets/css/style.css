@@ -1,0 +1,27 @@
+:root{--bg:#f4f4f8;--card:#fff;--text:#222;--muted:#666;--brand:#1976D2;--line:rgba(0,0,0,.08)}
+[data-theme="dark"]{--bg:#121418;--card:#1c1f26;--text:#e8eaf0;--muted:#9aa0ae;--brand:#64a6ff;--line:rgba(255,255,255,.1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+.cv{max-width:1000px;margin:0 auto;padding:24px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.topbar h1{font-size:18px}
+.toggle{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:8px 14px;cursor:pointer;font-size:14px}
+.grid{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:start}
+.profile{background:#1976D2;border-radius:16px;padding:20px;color:#fff;position:sticky;top:20px}
+[data-theme="dark"] .profile{background:#0d3a6b}
+.brand{display:flex;justify-content:space-between;align-items:center;font-weight:700;gap:8px;flex-wrap:wrap}
+.badge{background:#fff;color:#1976D2;font-size:11px;padding:4px 10px;border-radius:999px;white-space:nowrap}
+.avatar{width:120px;max-width:40vw;aspect-ratio:3/4;object-fit:cover;border-radius:12px;margin:20px 0 12px;background:#fff;display:block}
+.profile h2{font-size:clamp(18px,4vw,22px)}
+.role{color:rgba(255,255,255,.7);font-size:13px;margin-bottom:12px;letter-spacing:.08em}
+.contact{font-size:13px;color:rgba(255,255,255,.85);margin-bottom:16px;word-break:break-all}
+.about-title{font-weight:700;margin-bottom:8px}
+.about{font-size:13px;color:rgba(255,255,255,.85)}
+.section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px}
+.section h3{font-size:15px;margin-bottom:10px}
+.chip{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;margin:0 6px 6px 0;color:var(--text)}
+.exp{margin-bottom:10px}
+.exp .place{color:var(--brand);font-size:12px}
+.exp .year{color:var(--muted);font-size:11px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}.profile{position:static}.cv{padding:16px}}
+img{max-width:100%;height:auto}

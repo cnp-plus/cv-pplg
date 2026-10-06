@@ -1,403 +1,646 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV PPLG — Kumpulan Curriculum Vitae</title>
-<link rel="icon" type="image/jpeg" href="icon.jpg">
-<meta name="description" content="Portal kumpulan Curriculum Vitae siswa jurusan PPLG (Pengembangan Perangkat Lunak dan Gim).">
-<style>
-  :root {
-    --bg: #f7f5f1;
-    --ink: #1a1a18;
-    --ink-soft: #6b685f;
-    --line: #e4e0d7;
-    --accent: #3b5bdb;
-    --accent-ink: #ffffff;
-    --card: #ffffff;
-    --max: 1080px;
-  }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV PPLG — Kumpulan Curriculum Vitae</title>
+    <link rel="icon" type="image/jpeg" href="icon.jpg" />
+    <meta
+      name="description"
+      content="Portal kumpulan Curriculum Vitae siswa jurusan PPLG (Pengembangan Perangkat Lunak dan Gim)."
+    />
+    <style>
+      :root {
+        --bg: #f7f5f1;
+        --ink: #1a1a18;
+        --ink-soft: #6b685f;
+        --line: #e4e0d7;
+        --accent: #3b5bdb;
+        --accent-ink: #ffffff;
+        --card: #ffffff;
+        --max: 1080px;
+      }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
 
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    -webkit-font-smoothing: antialiased;
-  }
+      body {
+        background: var(--bg);
+        color: var(--ink);
+        font-family:
+          "Segoe UI",
+          system-ui,
+          -apple-system,
+          "Helvetica Neue",
+          Arial,
+          sans-serif;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        -webkit-font-smoothing: antialiased;
+      }
 
-  .wrap {
-    width: 100%;
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 24px;
-    flex: 1;
-  }
+      .wrap {
+        width: 100%;
+        max-width: var(--max);
+        margin: 0 auto;
+        padding: 0 24px;
+        flex: 1;
+      }
 
-  /* ---------- Header ---------- */
-  .site-head {
-    padding: 40px 0 8px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-  }
+      /* ---------- Header ---------- */
+      .site-head {
+        padding: 40px 0 8px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
 
-  .brand {
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-  }
+      .brand {
+        font-size: 14px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
 
-  .brand b { color: var(--accent); font-weight: 700; }
+      .brand b {
+        color: var(--accent);
+        font-weight: 700;
+      }
 
-  .count-pill {
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    border: 1px solid var(--line);
-    background: var(--card);
-    padding: 5px 12px;
-    border-radius: 999px;
-    white-space: nowrap;
-  }
+      .count-pill {
+        font-size: 12.5px;
+        color: var(--ink-soft);
+        border: 1px solid var(--line);
+        background: var(--card);
+        padding: 5px 12px;
+        border-radius: 999px;
+        white-space: nowrap;
+      }
 
-  /* ---------- Hero ---------- */
-  .hero {
-    padding: 64px 0 56px;
-    max-width: 720px;
-  }
+      /* ---------- Hero ---------- */
+      .hero {
+        padding: 64px 0 56px;
+        max-width: 720px;
+      }
 
-  .hero .eyebrow {
-    display: inline-block;
-    font-size: 12.5px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    border: 1px solid rgba(59, 91, 219, 0.25);
-    background: rgba(59, 91, 219, 0.06);
-    padding: 5px 12px;
-    border-radius: 999px;
-    margin-bottom: 20px;
-  }
+      .hero .eyebrow {
+        display: inline-block;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(59, 91, 219, 0.25);
+        background: rgba(59, 91, 219, 0.06);
+        padding: 5px 12px;
+        border-radius: 999px;
+        margin-bottom: 20px;
+      }
 
-  .hero h1 {
-    font-family: Georgia, "Palatino Linotype", "Times New Roman", serif;
-    font-weight: 600;
-    font-size: clamp(44px, 8vw, 72px);
-    line-height: 1.03;
-    letter-spacing: -0.02em;
-  }
+      .hero h1 {
+        font-family: Georgia, "Palatino Linotype", "Times New Roman", serif;
+        font-weight: 600;
+        font-size: clamp(44px, 8vw, 72px);
+        line-height: 1.03;
+        letter-spacing: -0.02em;
+      }
 
-  .hero h1 em {
-    font-style: normal;
-    color: var(--accent);
-  }
+      .hero h1 em {
+        font-style: normal;
+        color: var(--accent);
+      }
 
-  .hero p {
-    margin-top: 18px;
-    font-size: 17px;
-    color: var(--ink-soft);
-    max-width: 56ch;
-  }
+      .hero p {
+        margin-top: 18px;
+        font-size: 17px;
+        color: var(--ink-soft);
+        max-width: 56ch;
+      }
 
-  /* ---------- Search ---------- */
-  .search-row {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 14px 16px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    margin: 8px 0 32px;
-  }
+      /* ---------- Search ---------- */
+      .search-row {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: 14px 16px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        margin: 8px 0 32px;
+      }
 
-  .search-row label {
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    flex-shrink: 0;
-  }
+      .search-row label {
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        flex-shrink: 0;
+      }
 
-  .search-input-wrap { flex: 1; min-width: 180px; }
+      .search-input-wrap {
+        flex: 1;
+        min-width: 180px;
+      }
 
-  #search {
-    width: 100%;
-    font: inherit;
-    font-size: 15px;
-    color: var(--ink);
-    background: transparent;
-    border: 0;
-    outline: 0;
-    padding: 2px 0;
-  }
+      #search {
+        width: 100%;
+        font: inherit;
+        font-size: 15px;
+        color: var(--ink);
+        background: transparent;
+        border: 0;
+        outline: 0;
+        padding: 2px 0;
+      }
 
-  #search::placeholder { color: #a5a196; }
+      #search::placeholder {
+        color: #a5a196;
+      }
 
-  .search-empty {
-    display: none;
-    text-align: center;
-    color: var(--ink-soft);
-    padding: 48px 0 56px;
-  }
+      .search-empty {
+        display: none;
+        text-align: center;
+        color: var(--ink-soft);
+        padding: 48px 0 56px;
+      }
 
-  .search-empty b { display: block; font-size: 18px; color: var(--ink); margin-bottom: 4px; }
+      .search-empty b {
+        display: block;
+        font-size: 18px;
+        color: var(--ink);
+        margin-bottom: 4px;
+      }
 
-  /* ---------- Grid ---------- */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 14px;
-    padding-bottom: 72px;
-  }
+      /* ---------- Grid ---------- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 14px;
+        padding-bottom: 72px;
+      }
 
-  .card {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 22px 22px 18px;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    transition: border-color 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
-  }
+      .card {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        padding: 22px 22px 18px;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        transition:
+          border-color 0.18s ease,
+          transform 0.18s ease,
+          box-shadow 0.18s ease;
+      }
 
-  .card:hover {
-    border-color: rgba(59, 91, 219, 0.4);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(26, 26, 24, 0.06);
-  }
+      .card:hover {
+        border-color: rgba(59, 91, 219, 0.4);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(26, 26, 24, 0.06);
+      }
 
-  .avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    font-weight: 700;
-    font-size: 18px;
-    color: #fff;
-    background: linear-gradient(135deg, var(--c1), var(--c2));
-    letter-spacing: 0.02em;
-    overflow: hidden;
-    padding: 0;
-  }
+      .avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        font-size: 18px;
+        color: #fff;
+        background: linear-gradient(135deg, var(--c1), var(--c2));
+        letter-spacing: 0.02em;
+        overflow: hidden;
+        padding: 0;
+      }
 
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
 
-  .card h2 {
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    line-height: 1.3;
-  }
+      .card h2 {
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        line-height: 1.3;
+      }
 
-  .card a {
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    text-decoration: none;
-    font-size: 13.5px;
-    font-weight: 600;
-    color: var(--accent);
-    padding: 9px 14px;
-    border: 1px solid rgba(59, 91, 219, 0.3);
-    border-radius: 9px;
-    background: transparent;
-    transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
-  }
+      .card a {
+        margin-top: auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        text-decoration: none;
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--accent);
+        padding: 9px 14px;
+        border: 1px solid rgba(59, 91, 219, 0.3);
+        border-radius: 9px;
+        background: transparent;
+        transition:
+          background 0.18s ease,
+          color 0.18s ease,
+          border-color 0.18s ease;
+      }
 
-  .card a:hover {
-    background: var(--accent);
-    color: var(--accent-ink);
-    border-color: var(--accent);
-  }
+      .card a:hover {
+        background: var(--accent);
+        color: var(--accent-ink);
+        border-color: var(--accent);
+      }
 
-  .card a svg { flex-shrink: 0; }
+      .card a svg {
+        flex-shrink: 0;
+      }
 
-  .hide { display: none !important; }
+      .hide {
+        display: none !important;
+      }
 
-  /* ---------- Footer ---------- */
-  .site-foot {
-    border-top: 1px solid var(--line);
-    padding: 26px 0 34px;
-    text-align: center;
-    font-size: 13.5px;
-    color: var(--ink-soft);
-  }
+      /* ---------- Footer ---------- */
+      .site-foot {
+        border-top: 1px solid var(--line);
+        padding: 26px 0 34px;
+        text-align: center;
+        font-size: 13.5px;
+        color: var(--ink-soft);
+      }
 
-  .site-foot .dot { color: var(--accent); padding: 0 4px; }
+      .site-foot .dot {
+        color: var(--accent);
+        padding: 0 4px;
+      }
 
-  /* ---------- Responsive ---------- */
-  @media (max-width: 560px) {
-    .site-head {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      padding-top: 28px;
-      gap: 10px;
-    }
-    .brand {
-      max-width: 320px;
-      line-height: 1.5;
-      white-space: normal;
-    }
-    .count-pill {
-      white-space: normal;
-      text-align: center;
-    }
-    .hero { padding: 44px 0 40px; }
-    .hero h1 { letter-spacing: -0.015em; }
-    .grid { gap: 12px; }
-    .card { padding: 20px 18px 16px; }
-  }
-</style>
-</head>
-<body>
+      /* ---------- Responsive ---------- */
+      @media (max-width: 560px) {
+        .site-head {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding-top: 28px;
+          gap: 10px;
+        }
+        .brand {
+          max-width: 320px;
+          line-height: 1.5;
+          white-space: normal;
+        }
+        .count-pill {
+          white-space: normal;
+          text-align: center;
+        }
+        .hero {
+          padding: 44px 0 40px;
+        }
+        .hero h1 {
+          letter-spacing: -0.015em;
+        }
+        .grid {
+          gap: 12px;
+        }
+        .card {
+          padding: 20px 18px 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="wrap site-head">
+      <div class="brand">
+        Tugas dari <span>&nbsp;·&nbsp;</span>pak&nbsp;Ahmad Arief Wijayanto
+        <span><b>S.Kom., MMSI</b></span>
+      </div>
+      <div class="count-pill" id="countPill">28 CV tersedia</div>
+    </header>
 
-<header class="wrap site-head">
-  <div class="brand">Tugas dari <span>&nbsp;·&nbsp;</span>pak&nbsp;Ahmad Arief Wijayanto <span><b>S.Kom., MMSI</b></span></div>
-  <div class="count-pill" id="countPill">28 CV tersedia</div>
-</header>
+    <main class="wrap">
+      <section class="hero">
+        <span class="eyebrow">wilujeng sumping</span>
+        <h1>CV <em>PPLG</em></h1>
+        <p>
+          Kumpulan Curriculum Vitae murid jurusan Pengembangan Perangkat Lunak
+          dan Gim. Pilih salah satu nama untuk melihat profil lengkapnya.
+        </p>
+      </section>
 
-<main class="wrap">
-  <section class="hero">
-    <span class="eyebrow">wilujeng sumping</span>
-    <h1>CV <em>PPLG</em></h1>
-    <p>Kumpulan Curriculum Vitae murid jurusan Pengembangan Perangkat Lunak dan Gim. Pilih salah satu nama untuk melihat profil lengkapnya.</p>
-  </section>
+      <section class="search-row" aria-label="Cari CV">
+        <label for="search">Cari</label>
+        <div class="search-input-wrap">
+          <input
+            id="search"
+            type="search"
+            placeholder="Ketik nama…"
+            autocomplete="off"
+          />
+        </div>
+      </section>
 
-  <section class="search-row" aria-label="Cari CV">
-    <label for="search">Cari</label>
-    <div class="search-input-wrap">
-      <input id="search" type="search" placeholder="Ketik nama…" autocomplete="off">
-    </div>
-  </section>
+      <section class="grid" id="grid"></section>
 
-  <section class="grid" id="grid"></section>
+      <div class="search-empty" id="empty">
+        <b>Tidak ada hasil</b>
+        Tidak menemukan nama «<span id="q"></span>» yang kamu cari.
+      </div>
+    </main>
 
-  <div class="search-empty" id="empty">
-    <b>Tidak ada hasil</b>
-    Tidak menemukan nama «<span id="q"></span>» yang kamu cari.
-  </div>
-</main>
+    <footer class="site-foot">
+      <div class="wrap">
+        Deployed by<span class="dot">·</span> Hasan &amp; Rafi
+      </div>
+    </footer>
 
-<footer class="site-foot">
-  <div class="wrap">Deployed by<span class="dot">·</span> Hasan &amp; Rafi</div>
-</footer>
+    <script>
+      (function () {
+        var data = [
+          {
+            name: "Ahmad Yusuf Firdaus",
+            href: "src/yusuf/index.php",
+            c1: "#2563eb",
+            c2: "#64748b",
+            photo: "src/yusuf/assets/image/me.jpeg",
+          },
+          {
+            name: "Alsyah",
+            href: "src/alsa/indexx.php",
+            c1: "#6366f1",
+            c2: "#8b5cf6",
+            photo: "src/alsa/foto1.jpeg",
+          },
+          {
+            name: "Alya Nur Fauziah",
+            href: "src/alya/index.php",
+            c1: "#ec4899",
+            c2: "#f472b6",
+            photo: "src/alya/asset/foto.jpeg",
+          },
+          {
+            name: "Azzahra Meita Putri",
+            href: "src/zahraa/cvzahra.php",
+            c1: "#d946ef",
+            c2: "#a21caf",
+            photo: "src/zahraa/zahra.jpeg",
+          },
+          {
+            name: "Desy Apriyani",
+            href: "src/desy/cv.php",
+            c1: "#38bdf8",
+            c2: "#0ea5e9",
+            photo: "src/desy/fotode.jpeg",
+          },
+          {
+            name: "Dinia Saroh",
+            href: "src/dini/index.php",
+            c1: "#725cff",
+            c2: "#a58cff",
+            photo: "src/dini/asset/dini.jpeg",
+          },
+          {
+            name: "Dwi Rafi Mazdudin",
+            href: "src/rafi/index.php",
+            c1: "#3b82f6",
+            c2: "#60a5fa",
+            photo: "src/rafi/IMG_1029.jpg",
+          },
+          {
+            name: "Fedly Pratama",
+            href: "src/fedly/index.html",
+            c1: "#dc2626",
+            c2: "#f87171",
+            photo: "src/fedly/IMG-20251206-WA0790.jpg",
+          },
+          {
+            name: "Frysa Salsabila Fauzi",
+            href: "src/frysa/index.php",
+            c1: "#ec4899",
+            c2: "#f9a8d4",
+            photo: "src/frysa/foto1.jpeg",
+          },
+          {
+            name: "Hasan",
+            href: "src/hasan/index.php",
+            c1: "#f59e0b",
+            c2: "#f97316",
+            photo: "src/hasan/hasan.png",
+          },
+          {
+            name: "Krisna Apriyono",
+            href: "src/krisna/index.php",
+            c1: "#7c3aed",
+            c2: "#a78bfa",
+            photo: "src/krisna/kis.jpeg",
+          },
+          {
+            name: "Lulu Isnawati",
+            href: "src/lulu/index.php",
+            c1: "#10b981",
+            c2: "#34d399",
+            photo: "src/lulu/assets/lulu1.jpeg",
+          },
+          {
+            name: "Mitha Salsabila",
+            href: "src/mitha/cv.php",
+            c1: "#059669",
+            c2: "#34d399",
+            photo: "src/mitha/foto-mitha.jpeg",
+          },
+          {
+            name: "Muhamad Saiful Anwar",
+            href: "src/ipul/index.html",
+            c1: "#0f766e",
+            c2: "#5eead4",
+            photo: "src/ipul/assets/img/profile.png",
+          },
+          {
+            name: "Muhammad Lutpi",
+            href: "src/lutpi/cv2.php",
+            c1: "#0ea5e9",
+            c2: "#38bdf8",
+            photo: "src/lutpi/lutpi.jpg",
+          },
+          {
+            name: "Nihayatul Karimah",
+            href: "src/niha/cvniha.php",
+            c1: "#8b5cf6",
+            c2: "#a78bfa",
+            photo: "src/niha/nihacv.jpg.jpeg",
+          },
+          {
+            name: "Noval Fazri",
+            href: "src/noval/index.php",
+            c1: "#14b8a6",
+            c2: "#2dd4bf",
+            photo: "src/noval/noval.jpeg",
+          },
+          {
+            name: "Nurmala Ayu Komalasari",
+            href: "src/mala/index.php",
+            c1: "#f43f5e",
+            c2: "#fb7185",
+            photo: "src/mala/assets/malmal.jpeg",
+          },
+          {
+            name: "Retno Ayu Anjani",
+            href: "src/retno/index.php",
+            c1: "#d946ef",
+            c2: "#e879f9",
+            photo: "src/retno/image/imupp.jpeg",
+          },
+          {
+            name: "Reva Alviani",
+            href: "src/reva/index.php",
+            c1: "#06b6d4",
+            c2: "#22d3ee",
+            photo: "src/reva/foto4.jpg",
+          },
+          {
+            name: "Ridho Firmansyah",
+            href: "src/ridho/index.php",
+            c1: "#06b6d4",
+            c2: "#22d3ee",
+            photo: "src/ridho/assets/img/SSS.jpeg",
+          },
+          {
+            name: "Rido Maulana",
+            href: "src/rido/index.php",
+            c1: "#475569",
+            c2: "#94a3b8",
+            photo: "src/rido/foto.png",
+          },
+          {
+            name: "Sahla Tri Nurrani",
+            href: "src/sahla/sahla5.php",
+            c1: "#ef4444",
+            c2: "#f87171",
+            photo: "src/sahla/fotosahla.jpeg",
+          },
+          {
+            name: "Sartono Tegar",
+            href: "src/tegar/index.php",
+            c1: "#2563eb",
+            c2: "#93c5fd",
+            photo: "src/tegar/assets/Profile.jpg",
+          },
+          {
+            name: "Shinta Ramadhani",
+            href: "src/shinta/index.php",
+            c1: "#a855f7",
+            c2: "#c084fc",
+            photo: "src/shinta/fotosinta.jpeg",
+          },
+          {
+            name: "Vebyola Oktaviani",
+            href: "src/vebyola/vebyola.php",
+            c1: "#f43f5e",
+            c2: "#fda4af",
+            photo: "src/vebyola/veb.jpeg",
+          },
+          {
+            name: "Wildan Aziz Mubakkir",
+            href: "src/wildan/cv_wldn.php",
+            c1: "#1e3a8a",
+            c2: "#f59e0b",
+            photo: "src/wildan/asset/wildan.png",
+          },
+          {
+            name: "Yesi Anggita",
+            href: "src/yesi/index.php",
+            c1: "#db2777",
+            c2: "#f9a8d4",
+            photo: "src/yesi/assets/foto1.png",
+          },
+          {
+            name: "Zazkya Fadillah",
+            href: "src/zazkya/index.php",
+            c1: "#0ea5e9",
+            c2: "#6366f1",
+            photo: "src/zazkya/image/zazkya.jpeg",
+          },
+        ];
 
-<script>
-  (function () {
-    var data = [
-      { name: "Ahmad Yusuf Firdaus",  href: "src/yusuf/index.php",         c1: "#2563eb", c2: "#64748b", photo: "src/yusuf/assets/image/me.jpeg" },
-      { name: "Alsyah",               href: "src/alsa/indexx.php",         c1: "#6366f1", c2: "#8b5cf6", photo: "src/alsa/foto1.jpeg" },
-      { name: "Alya Nur Fauziah",     href: "src/alya/index.php",          c1: "#ec4899", c2: "#f472b6", photo: "src/alya/asset/foto.jpeg" },
-      { name: "Azzahra Meita Putri",      href: "src/zahraa/cvzahra.php",      c1: "#d946ef", c2: "#a21caf", photo: "src/zahraa/zahra.jpeg" },
-      { name: "Desy Apriyani",          href: "src/desy/cv.php",              c1: "#38bdf8", c2: "#0ea5e9", photo: "src/desy/fotode.jpeg" },
-      { name: "Dinia Saroh",            href: "src/dini/index.php",          c1: "#725cff", c2: "#a58cff", photo: "src/dini/asset/dini.jpeg" },
-      { name: "Dwi Rafi Mazdudin",    href: "src/rafi/index.php",          c1: "#3b82f6", c2: "#60a5fa", photo: "src/rafi/IMG_1029.jpg" },
-      { name: "Fedly Pratama",          href: "src/fedly/index.html",        c1: "#dc2626", c2: "#f87171", photo: "src/fedly/IMG-20251206-WA0790.jpg" },
-      { name: "Frysa Salsabila Fauzi",  href: "src/frysa/index.php",         c1: "#ec4899", c2: "#f9a8d4", photo: "src/frysa/foto1.jpeg" },
-      { name: "Hasan",                href: "src/hasan/index.php",         c1: "#f59e0b", c2: "#f97316", photo: "src/hasan/hasan.png" },
-      { name: "Krisna Apriyono",        href: "src/krisna/index.php",        c1: "#7c3aed", c2: "#a78bfa", photo: "src/krisna/kis.jpeg" },
-      { name: "Lulu Isnawati",        href: "src/lulu/index.php",          c1: "#10b981", c2: "#34d399", photo: "src/lulu/assets/lulu1.jpeg" },
-      { name: "Mitha Salsabila",        href: "src/mitha/cv.php",             c1: "#059669", c2: "#34d399", photo: "src/mitha/foto-mitha.jpeg" },
-      { name: "Muhamad Saiful Anwar",   href: "src/ipul/index.html",         c1: "#0f766e", c2: "#5eead4", photo: "src/ipul/assets/img/profile.png" },
-      { name: "Muhammad Lutpi",         href: "src/lutpi/cv2.php",           c1: "#0ea5e9", c2: "#38bdf8", photo: "src/lutpi/lutpi.jpg" },
-      { name: "Nihayatul Karimah",      href: "src/niha/cvniha.php",         c1: "#8b5cf6", c2: "#a78bfa", photo: "src/niha/nihacv.jpg.jpeg" },
-      { name: "Noval Fazri",          href: "src/noval/index.php",         c1: "#14b8a6", c2: "#2dd4bf", photo: "src/noval/noval.jpeg" },
-      { name: "Nurmala Ayu Komalasari", href: "src/mala/index.php",        c1: "#f43f5e", c2: "#fb7185", photo: "src/mala/assets/malmal.jpeg" },
-      { name: "Retno Ayu Anjani",     href: "src/retno/index.php",         c1: "#d946ef", c2: "#e879f9", photo: "src/retno/image/imupp.jpeg" },
-      { name: "Reva Alviani",         href: "src/reva/index.php",          c1: "#06b6d4", c2: "#22d3ee", photo: "src/reva/foto4.jpg" },
-      { name: "Rido Maulana",   href: "src/rido/index.php",          c1: "#475569", c2: "#94a3b8", photo: "src/rido/foto.png" },
-      { name: "Sahla Tri Nurrani",        href: "src/sahla/sahla5.php",        c1: "#ef4444", c2: "#f87171", photo: "src/sahla/fotosahla.jpeg" },
-      { name: "Sartono Tegar",          href: "src/tegar/index.php",         c1: "#2563eb", c2: "#93c5fd", photo: "src/tegar/assets/Profile.jpg" },
-      { name: "Shinta Ramadhani",     href: "src/shinta/index.php",        c1: "#a855f7", c2: "#c084fc", photo: "src/shinta/fotosinta.jpeg" },
-      { name: "Vebyola Oktaviani",    href: "src/vebyola/vebyola.php",     c1: "#f43f5e", c2: "#fda4af", photo: "src/vebyola/veb.jpeg" },
-      { name: "Wildan Aziz Mubakkir",   href: "src/wildan/cv_wldn.php",     c1: "#1e3a8a", c2: "#f59e0b", photo: "src/wildan/asset/wildan.png" },
-      { name: "Yesi Anggita",           href: "src/yesi/index.php",          c1: "#db2777", c2: "#f9a8d4", photo: "src/yesi/assets/foto1.png" },
-      { name: "Zazkya Fadillah",      href: "src/zazkya/index.php",        c1: "#0ea5e9", c2: "#6366f1", photo: "src/zazkya/image/zazkya.jpeg" }
-    ];
+        var grid = document.getElementById("grid"),
+          input = document.getElementById("search"),
+          empty = document.getElementById("empty"),
+          qEl = document.getElementById("q"),
+          countPill = document.getElementById("countPill");
 
-    var grid = document.getElementById("grid"),
-        input = document.getElementById("search"),
-        empty = document.getElementById("empty"),
-        qEl = document.getElementById("q"),
-        countPill = document.getElementById("countPill");
+        function render(items) {
+          grid.innerHTML = "";
+          items.forEach(function (p) {
+            var card = document.createElement("article");
+            card.className = "card";
 
-    function render(items) {
-      grid.innerHTML = "";
-      items.forEach(function (p) {
-        var card = document.createElement("article");
-        card.className = "card";
+            var av = document.createElement("div");
+            av.className = "avatar";
+            av.style.setProperty("--c1", p.c1);
+            av.style.setProperty("--c2", p.c2);
 
-        var av = document.createElement("div");
-        av.className = "avatar";
-        av.style.setProperty("--c1", p.c1);
-        av.style.setProperty("--c2", p.c2);
+            if (p.photo) {
+              var img = document.createElement("img");
+              img.src = p.photo;
+              img.alt = "Foto " + p.name;
+              img.loading = "lazy";
+              img.onerror = function () {
+                this.remove();
+              };
+              av.appendChild(img);
+            }
 
-        if (p.photo) {
-          var img = document.createElement("img");
-          img.src = p.photo;
-          img.alt = "Foto " + p.name;
-          img.loading = "lazy";
-          img.onerror = function () { this.remove(); };
-          av.appendChild(img);
+            var h = document.createElement("h2");
+            h.textContent = p.name;
+
+            var a = document.createElement("a");
+            a.href = p.href;
+            a.target = "_blank";
+            a.rel = "noopener";
+            a.setAttribute("aria-label", "Lihat CV " + p.name);
+            a.innerHTML =
+              "Lihat CV" +
+              '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+
+            card.appendChild(av);
+            card.appendChild(h);
+            card.appendChild(a);
+            grid.appendChild(card);
+          });
+
+          input.setAttribute("data-total", items.length);
         }
 
-        var h = document.createElement("h2");
-        h.textContent = p.name;
+        function filter() {
+          var q = input.value.trim().toLowerCase();
+          var list =
+            q === ""
+              ? data
+              : data.filter(function (p) {
+                  return p.name.toLowerCase().indexOf(q) !== -1;
+                });
+          render(list);
+          empty.style.display = list.length === 0 ? "block" : "none";
+          qEl.textContent = input.value.trim();
+          countPill.textContent = list.length + " dari " + data.length + " CV";
+        }
 
-        var a = document.createElement("a");
-        a.href = p.href;
-        a.target = "_blank";
-        a.rel = "noopener";
-        a.setAttribute("aria-label", "Lihat CV " + p.name);
-        a.innerHTML = "Lihat CV" +
-          '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
-
-        card.appendChild(av);
-        card.appendChild(h);
-        card.appendChild(a);
-        grid.appendChild(card);
-      });
-
-      input.setAttribute("data-total", items.length);
-    }
-
-    function filter() {
-      var q = input.value.trim().toLowerCase();
-      var list = q === "" ? data : data.filter(function (p) { return p.name.toLowerCase().indexOf(q) !== -1; });
-      render(list);
-      empty.style.display = list.length === 0 ? "block" : "none";
-      qEl.textContent = input.value.trim();
-      countPill.textContent = list.length + " dari " + data.length + " CV";
-    }
-
-    input.addEventListener("input", filter);
-    render(data);
-  })();
-</script>
-
-</body>
+        input.addEventListener("input", filter);
+        render(data);
+      })();
+    </script>
+  </body>
 </html>

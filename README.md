@@ -14,7 +14,7 @@ cv_pplg/
 │   ├── cv-pplg.service
 │   ├── install.sh
 │   └── update.sh
-└── src/          # 29 folder CV individu
+└── src/          # 30 folder CV individu
 ```
 
 ## Daftar CV
@@ -42,14 +42,15 @@ cv_pplg/
 | 19 | Nurmala Ayu Komalasari | `src/mala/index.php` |
 | 20 | Retno Ayu Anjani | `src/retno/index.php` |
 | 21 | Reva Alviani | `src/reva/index.php` |
-| 22 | Rido Maulana | `src/rido/index.php` |
-| 23 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
-| 24 | Sartono Tegar | `src/tegar/index.php` |
-| 25 | Shinta Ramadhani | `src/shinta/index.php` |
-| 26 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
-| 27 | Wildan Aziz Mubakkir | `src/wildan/cv_wldn.php` |
-| 28 | Yesi Anggita | `src/yesi/index.php` |
-| 29 | Zazkya Fadillah | `src/zazkya/index.php` |
+| 22 | Ridho Firmansyah | `src/ridho/index.php` |
+| 23 | Rido Maulana | `src/rido/index.php` |
+| 24 | Sahla Tri Nurrani | `src/sahla/sahla5.php` |
+| 25 | Sartono Tegar | `src/tegar/index.php` |
+| 26 | Shinta Ramadhani | `src/shinta/index.php` |
+| 27 | Vebyola Oktaviani | `src/vebyola/vebyola.php` |
+| 28 | Wildan Aziz Mubakkir | `src/wildan/cv_wldn.php` |
+| 29 | Yesi Anggita | `src/yesi/index.php` |
+| 30 | Zazkya Fadillah | `src/zazkya/index.php` |
 
 ## Cara Menjalankan
 
@@ -71,7 +72,7 @@ Lalu buka:
 
 - Hero judul "CV PPLG"
 - Search filter live (case-insensitive)
-- Grid 29 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
+- Grid 30 kartu urut abjad (avatar inisial + nama + tombol Lihat CV, dibuka di tab baru)
 - Responsive mobile
 
 ## Tech Stack

@@ -1,6 +1,5 @@
 # Image CV PPLG: PHP CLI + built-in server untuk serve file statis/PHP.
-# Build: podman build -t localhost/cv-pplg:latest .
-# Run:   podman run --rm -p 8000:8000 localhost/cv-pplg:latest
+# Build & run: docker compose up -d --build
 FROM docker.io/library/php:8.3-cli-alpine
 
 WORKDIR /app

@@ -1,5 +1,6 @@
 .git
 .opencode
 deploy
-Containerfile
+Dockerfile
+compose.yaml
 .dockerignore

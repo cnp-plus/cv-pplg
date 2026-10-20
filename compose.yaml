@@ -1,0 +1,9 @@
+services:
+  cv-pplg:
+    build: .
+    image: cv-pplg:latest
+    container_name: cv-pplg
+    ports:
+      - "${PORT:-2027}:8000"
+    restart: unless-stopped
+    init: true

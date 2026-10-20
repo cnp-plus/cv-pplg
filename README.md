@@ -8,10 +8,10 @@ Kumpulan Curriculum Vitae murid jurusan PPLG (Pengembangan Perangkat Lunak dan G
 cv_pplg/
 ├── index.html    # Landing page portal
 ├── README.md
-├── Containerfile # Image Podman (PHP CLI + php -S)
+├── Dockerfile    # Image Docker (PHP CLI + php -S)
+├── compose.yaml  # Orkestrasi Docker Compose
 ├── .dockerignore
-├── deploy/       # Deploy Podman + systemd
-│   ├── cv-pplg.service
+├── deploy/       # Deploy Docker Compose
 │   ├── install.sh
 │   └── update.sh
 └── src/          # 30 folder CV individu
@@ -54,17 +54,16 @@ cv_pplg/
 
 ## Cara Menjalankan
 
-Butuh Podman:
+Butuh Docker:
 
 ```bash
-podman build -t localhost/cv-pplg:latest .
-podman run --rm -p 8000:8000 localhost/cv-pplg:latest
+docker compose up -d --build
 ```
 
 Lalu buka:
 
-- Portal: `http://localhost:8000/index.html`
-- Contoh CV langsung: `http://localhost:8000/src/rafi/index.php`
+- Portal: `http://localhost:2027/index.html`
+- Contoh CV langsung: `http://localhost:2027/src/rafi/index.php`
 
 ## Landing Page
 
@@ -81,42 +80,33 @@ Lalu buka:
 - HTML5 + CSS3 vanilla (sebagian inline, sebagian file `.css` terpisah)
 - Tanpa framework, tanpa build tool, tanpa `package.json`
 
-## Deploy Server (Podman rootless + systemd user, port 2027)
+## Deploy Server (Docker Compose, port 2027)
 
 File deploy ada di `deploy/`:
 
-- `Containerfile` — image Podman (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
-- `deploy/cv-pplg.service` — unit systemd **user** yang menjalankan `podman run --init` (container `cv-pplg`)
-- `deploy/install.sh` — build image, pasang unit user, `enable --now`, aktifkan lingering
-- `deploy/update.sh` — rebuild image + restart service
+- `Dockerfile` — image (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
+- `compose.yaml` — container `cv-pplg`, port `${PORT:-2027}:8000`, `restart: unless-stopped` (jalan lagi otomatis setelah reboot)
+- `deploy/install.sh` — build + jalankan pertama kali
+- `deploy/update.sh` — rebuild image + restart container
 
-Semua dijalankan sebagai **user biasa, tanpa sudo** (rootless):
+Di server (Debian/Ubuntu, dari root repo), Docker dipasang sekali via sudo,
+setelahnya **tanpa sudo** (user anggota grup `docker`):
 
 ```bash
-sudo apt install -y podman     # satu-satunya langkah yang butuh sudo
+curl -fsSL https://get.docker.com |sh   # sekali saja
+sudo usermod -aG docker $USER           # lalu log-out/log-in
 ./deploy/install.sh
 ```
 
-Kustomisasi:
+Kustomisasi port:
 
 ```bash
-IMAGE=localhost/cv-pplg:latest PORT=2027 ./deploy/install.sh
+PORT=8080 ./deploy/install.sh
 ```
 
-Catatan rootless:
-
-- Semua podman sudah dipetakan (`subuid/subgid`); jika `podman info` gagal:
-  `sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER`,
-  lalu log-out/log-in.
-- `install.sh` mengaktifkan `loginctl enable-linger $USER` agar service
-  jalan lagi setelah reboot tanpa sesi login aktif (sudo dibutuhkan bila
-  polkit menolak — ikuti pesan `Warning` yang muncul).
-- Port harus ≥ 1024 (default 2027 aman). Port < 1024 tidak bisa dibind
-  user biasa.
-- Jika sebelumnya pernah memakai deploy root lama, `install.sh` berhenti
-  dengan pesan perintah yang perlu dijalankan via sudo untuk membersihkan
-  unit system lama (`systemctl disable --now cv-pplg.service`,
-  hapus `/etc/systemd/system/cv-pplg.service`).
+`install.sh` otomatis menolak jalan kalau masih ada service podman/systemd
+lama bernama `cv-pplg` (system maupun user) dan menampilkan perintah
+pembersihannya — port 2027 akan bentrok kalau dua-duanya jalan.
 
 ## Update File di Server
 
@@ -128,7 +118,7 @@ git pull origin main
 ./deploy/update.sh
 ```
 
-`update.sh` me-rebuild image dari repo terbaru lalu restart service,
+`update.sh` me-rebuild image dari repo terbaru lalu jalankan ulang container,
 sehingga file yang dihapus di repo ikut hilang dari server
 (contoh: ganti foto `foto_lulu.jpg` → `lulu1.jpeg`).
 
@@ -138,9 +128,8 @@ Jika domain di belakang Cloudflare, purge cache untuk path yang berubah
 Cek status:
 
 ```bash
-systemctl --user status cv-pplg.service
-journalctl --user -u cv-pplg.service -f
-podman ps
+docker compose ps
+docker compose logs -f
 ```
 
 Lalu buka `http://<ip-server>:2027/index.html`. Buka port 2027 di firewall bila perlu (`ufw allow 2027/tcp`).

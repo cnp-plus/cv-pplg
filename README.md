@@ -81,27 +81,42 @@ Lalu buka:
 - HTML5 + CSS3 vanilla (sebagian inline, sebagian file `.css` terpisah)
 - Tanpa framework, tanpa build tool, tanpa `package.json`
 
-## Deploy Server (Podman + systemd, port 2027)
+## Deploy Server (Podman rootless + systemd user, port 2027)
 
 File deploy ada di `deploy/`:
 
 - `Containerfile` — image Podman (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
-- `deploy/cv-pplg.service` — unit systemd yang menjalankan `podman run` (container `cv-pplg`)
-- `deploy/install.sh` — build image, pasang unit, `enable --now`
+- `deploy/cv-pplg.service` — unit systemd **user** yang menjalankan `podman run --init` (container `cv-pplg`)
+- `deploy/install.sh` — build image, pasang unit user, `enable --now`, aktifkan lingering
 - `deploy/update.sh` — rebuild image + restart service
 
-Di server (Debian/Ubuntu, dari root repo):
+Semua dijalankan sebagai **user biasa, tanpa sudo** (rootless):
 
 ```bash
-sudo apt install -y podman
-sudo ./deploy/install.sh
+sudo apt install -y podman     # satu-satunya langkah yang butuh sudo
+./deploy/install.sh
 ```
 
 Kustomisasi:
 
 ```bash
-IMAGE=localhost/cv-pplg:latest PORT=2027 sudo -E ./deploy/install.sh
+IMAGE=localhost/cv-pplg:latest PORT=2027 ./deploy/install.sh
 ```
+
+Catatan rootless:
+
+- Semua podman sudah dipetakan (`subuid/subgid`); jika `podman info` gagal:
+  `sudo usermod --add-subuids 100000-165535 --add-subgids 100000-165535 $USER`,
+  lalu log-out/log-in.
+- `install.sh` mengaktifkan `loginctl enable-linger $USER` agar service
+  jalan lagi setelah reboot tanpa sesi login aktif (sudo dibutuhkan bila
+  polkit menolak — ikuti pesan `Warning` yang muncul).
+- Port harus ≥ 1024 (default 2027 aman). Port < 1024 tidak bisa dibind
+  user biasa.
+- Jika sebelumnya pernah memakai deploy root lama, `install.sh` berhenti
+  dengan pesan perintah yang perlu dijalankan via sudo untuk membersihkan
+  unit system lama (`systemctl disable --now cv-pplg.service`,
+  hapus `/etc/systemd/system/cv-pplg.service`).
 
 ## Update File di Server
 
@@ -110,7 +125,7 @@ IMAGE=localhost/cv-pplg:latest PORT=2027 sudo -E ./deploy/install.sh
 
 ```bash
 git pull origin main
-sudo ./deploy/update.sh
+./deploy/update.sh
 ```
 
 `update.sh` me-rebuild image dari repo terbaru lalu restart service,
@@ -123,8 +138,9 @@ Jika domain di belakang Cloudflare, purge cache untuk path yang berubah
 Cek status:
 
 ```bash
-systemctl status cv-pplg.service
-journalctl -u cv-pplg.service -f
+systemctl --user status cv-pplg.service
+journalctl --user -u cv-pplg.service -f
+podman ps
 ```
 
 Lalu buka `http://<ip-server>:2027/index.html`. Buka port 2027 di firewall bila perlu (`ufw allow 2027/tcp`).

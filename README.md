@@ -84,7 +84,7 @@ Lalu buka:
 
 File deploy ada di `deploy/`:
 
-- `Dockerfile` — image (`php:8.3-cli-alpine`, serve via `php -S 0.0.0.0:8000`)
+- `Dockerfile` — image (`php:8.3.36-cli-alpine`, di-pin ≥ 8.3.36 karena PHP2Shell, serve via `php -S 0.0.0.0:8000`)
 - `compose.yaml` — container `cv-pplg`, port `${PORT:-2027}:8000`, `restart: unless-stopped` (jalan lagi otomatis setelah reboot)
 - `deploy/install.sh` — build + jalankan pertama kali
 - `deploy/update.sh` — rebuild image + restart container
@@ -107,6 +107,27 @@ PORT=8080 ./deploy/install.sh
 `install.sh` otomatis menolak jalan kalau masih ada service podman/systemd
 lama bernama `cv-pplg` (system maupun user) dan menampilkan perintah
 pembersihannya — port 2027 akan bentrok kalau dua-duanya jalan.
+
+## Keamanan PHP (PHP2Shell)
+
+Image PHP **di-pin** ke `8.3.36`, rilis pertama yang menambal
+[CVE-2026-109618 & CVE-2026-109619](https://www.php2shell.com/) (CVSS 9.2,
+RCE/memory disclosure tanpa autentikasi). Jangan menurunkan ke versi
+< 8.3.36 dan jangan memakai tag mengambang `8.3-cli-alpine` — isinya bisa
+berubah tanpa terlihat.
+
+Cek versi yang benar-benar berjalan di server:
+
+```bash
+docker compose exec cv-pplg php -v   # harus 8.3.36+
+```
+
+Saat menaikkan versi: ubah `FROM` di `Dockerfile`, lalu
+
+```bash
+docker compose build --pull
+docker compose up -d --force-recreate
+```
 
 ## Update File di Server
 

@@ -50,8 +50,11 @@ for kind in "" "--user"; do
   fi
 done
 
-echo "==> Build + jalankan (docker compose)"
-docker compose up -d --build
+echo "==> Build image (pull base image, termasuk patch PHP terbaru)"
+docker compose build --pull
+
+echo "==> Jalankan container"
+docker compose up -d
 
 echo "==> Status"
 docker compose ps
